@@ -10,14 +10,26 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material3.AlertDialogDefaults.shape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -40,6 +52,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CoffeeElement(modifier: Modifier = Modifier) {
+    var isFavourite by rememberSaveable { mutableStateOf(false) }
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -56,22 +69,42 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .height(80.dp)
+                    .height(60.dp)
             )
             Text(
                 text = "Espresso",
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier
+                    .padding(start = 8.dp, top = 8.dp)
+                    .paddingFromBaseline(bottom = 6.dp)
+
             )
             Text(
-                text = "Little test bio for espresso.. blah blah",
-                style = MaterialTheme.typography.bodySmall
+                text = "Rich, bold shot of pure coffee with a smooth, intense flavor.",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(horizontal = 8.dp)
             )
+
+            Row(
+                horizontalArrangement = Arrangement.End,
+                modifier = Modifier
+                    .fillMaxWidth()) {
+                IconButton(
+                    onClick = { isFavourite = !isFavourite },
+                    modifier = Modifier) {
+                    Icon(
+                        Icons.Outlined.Favorite,
+                        contentDescription = "Favourite",
+                        modifier = Modifier
+                            .size(18.dp)
+                    )
+                }
+            }
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0xFF1E1E1E)
 @Composable
 fun CoffeeElementPreview() {
     BrewTheme {
