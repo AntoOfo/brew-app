@@ -5,10 +5,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.brew.coffeeData
+import com.example.brew.coffeeData
 import com.example.brew.ui.theme.BrewTheme
 
 @Composable
@@ -21,8 +24,12 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.height(440.dp)
     ) {
-        items(8) { item ->
-            CoffeeElement()
+        items(coffeeData) { item ->
+            CoffeeElement(
+                item.drawable,
+                item.coffeeText,
+                item.biotext,
+                item.strengthText)
         }
     }
 }

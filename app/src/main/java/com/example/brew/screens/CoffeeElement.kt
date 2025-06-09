@@ -1,5 +1,6 @@
 package com.example.brew.screens
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,13 +29,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.annotation.StringRes
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.R
 import com.example.brew.ui.theme.BrewTheme
 
 @Composable
-fun CoffeeElement(modifier: Modifier = Modifier) {
+fun CoffeeElement(
+    @DrawableRes drawable: Int,
+    @StringRes coffeeName: Int,
+    @StringRes coffeeBio: Int,
+    @StringRes coffeeStrength: Int,
+    modifier: Modifier = Modifier) {
+
     var isFavourite by rememberSaveable { mutableStateOf(false) }
 
     Surface(
@@ -49,7 +58,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Image(
-                painter = painterResource(R.drawable.espresso),
+                painter = painterResource(drawable),
                 contentDescription = null,
                 alpha = 0.7F,
                 contentScale = ContentScale.Crop,
@@ -58,7 +67,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
             )
             Text(
-                text = "Espresso",
+                text = stringResource(coffeeName),
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -67,7 +76,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
 
             )
             Text(
-                text = "Rich, bold shot of pure coffee with a smooth, intense flavor.",
+                text = stringResource(coffeeBio),
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
@@ -79,7 +88,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .padding(start = 9.dp, end = 6.dp, top = 6.dp)) {
                 Text(
-                    text = "Strong",
+                    text = stringResource(coffeeStrength),
                     color = Color(0xFFB0B0B0),
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier
@@ -105,6 +114,10 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
 @Composable
 fun CoffeeElementPreview() {
     BrewTheme {
-        CoffeeElement()
+        CoffeeElement(
+            R.drawable.espresso,
+            R.string.espresso,
+            R.string.espresso_bio,
+            R.string.strong)
     }
 }

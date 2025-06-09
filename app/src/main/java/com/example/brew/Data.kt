@@ -10,7 +10,7 @@ data class DrawableStringsSetup(
     @StringRes val strengthText: Int
 )
 
-val coffeData = listOf(
+val coffeeData = listOf(
     // espresso
     DrawableStringsSetup(
         R.drawable.espresso,
