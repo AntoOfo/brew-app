@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -40,12 +41,12 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface,
         modifier = modifier
-            .width(140.dp)
+            .fillMaxWidth()
             .height(145.dp)) {
 
         Column(
             horizontalAlignment = Alignment.Start,
-            modifier = Modifier
+            modifier = Modifier.fillMaxWidth()
         ) {
             Image(
                 painter = painterResource(R.drawable.espresso),
@@ -54,11 +55,13 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(60.dp)
+                    .fillMaxWidth()
             )
             Text(
                 text = "Espresso",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier
+                    .fillMaxWidth()
                     .padding(start = 8.dp, top = 8.dp)
                     .paddingFromBaseline(bottom = 8.dp)
 

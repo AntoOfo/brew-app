@@ -19,7 +19,7 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
         contentPadding = PaddingValues(vertical = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier.height(240.dp)
+        modifier = modifier
     ) {
         items(10) { item ->
             CoffeeElement()
