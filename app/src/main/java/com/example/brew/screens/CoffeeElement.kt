@@ -24,6 +24,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +41,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
         color = MaterialTheme.colorScheme.surface,
         modifier = modifier
             .width(140.dp)
-            .height(140.dp)) {
+            .height(145.dp)) {
 
         Column(
             horizontalAlignment = Alignment.Start,
@@ -49,6 +50,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
             Image(
                 painter = painterResource(R.drawable.espresso),
                 contentDescription = null,
+                alpha = 0.7F,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(60.dp)
@@ -58,7 +60,7 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier
                     .padding(start = 8.dp, top = 8.dp)
-                    .paddingFromBaseline(bottom = 6.dp)
+                    .paddingFromBaseline(bottom = 8.dp)
 
             )
             Text(
@@ -68,12 +70,20 @@ fun CoffeeElement(modifier: Modifier = Modifier) {
             )
 
             Row(
-                horizontalArrangement = Arrangement.End,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .fillMaxWidth()) {
+                    .fillMaxWidth()
+                    .padding(start = 9.dp, end = 6.dp, top = 6.dp)) {
+                Text(
+                    text = "Strong",
+                    color = Color(0xFFB0B0B0),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier
+                )
                 IconButton(
                     onClick = { isFavourite = !isFavourite },
-                    modifier = Modifier
+                    modifier = Modifier.size(24.dp)
                 ) {
                     Icon(
                         Icons.Outlined.Favorite,
