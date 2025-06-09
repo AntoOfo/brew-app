@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Brew</string>
+    
+    <string name="strong">Strong</string>
+    <string name="bold">Bold</string>
+    <string name="balanced">Balanced</string>
+    <string name="mild">Mild</string>
+    
+    <string name="espresso">Espresso</string>
+    <string name="espresso_bio">Rich, bold shot of pure coffee with a smooth, intense flavour.</string>
+
+    <string name="americano">Americano</string>
+    <string name="americano_bio">Smooth, rich espresso diluted with hot water for a balanced, clean taste.</string>
+
+    <string name="latte">Latte</string>
+    <string name="latte_bio">Smooth and creamy with steamed milk and a gentle, comforting taste.</string>
+
+    <string name="cappuccino">Cappuccino</string>
+    <string name="cappuccino_bio">Light, foamy top with a rich body and a well-rounded, velvety taste.</string>
+
+    <string name="flat_white">Flat White</string>
+    <string name="flatwhite_bio">A perfect balance of rich coffee and steamed milk.</string>
+
+    <string name="mocha">Mocha</string>
+    <string name="mocha_bio">Rich blend of coffee and chocolate with a hint of sweetness.</string>
+
+    <string name="macchiato">Macchiato</string>
+    <string name="macchiato_bio">Sharp shot of coffee marked with a touch of milk for balance.</string>
 </resources>
