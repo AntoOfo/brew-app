@@ -59,6 +59,27 @@ val coffeeData = listOf(
         R.string.macchiato,
         R.string.macchiato_bio,
         R.string.bold
+    ),
+    // cold brew
+    DrawableStringsSetup(
+        R.drawable.coldbrew,
+        R.string.cold_brew,
+        R.string.coldbrew_bio,
+        R.string.bold
+    ),
+    // long black
+    DrawableStringsSetup(
+        R.drawable.longblack,
+        R.string.long_black,
+        R.string.longblack_bio,
+        R.string.strong
+    ),
+    // turkish
+    DrawableStringsSetup(
+        R.drawable.turkish,
+        R.string.turkish_coffee,
+        R.string.turkish_bio,
+        R.string.strong
     )
 
 )

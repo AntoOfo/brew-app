@@ -26,4 +26,13 @@
 
     <string name="macchiato">Macchiato</string>
     <string name="macchiato_bio">Sharp shot of coffee marked with a touch of milk for balance.</string>
+
+    <string name="cold_brew">Cold Brew</string>
+    <string name="coldbrew_bio">Chilled and mellow, brewed slowly for a rich taste with gentle strength.</string>
+
+    <string name="long_black">Long Black</string>
+    <string name="longblack_bio">Hot water topped with espresso, offering a bold yet clean coffee experience.</string>
+
+    <string name="turkish_coffee">Turkish Coffee</string>
+    <string name="turkish_bio">Finely ground coffee simmered to a rich, unfiltered brew with deep intensity.</string>
 </resources>
