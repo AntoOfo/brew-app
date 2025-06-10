@@ -37,5 +37,6 @@ fun HomeSection(
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(modifier.verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(16.dp))
+
     }
 }
