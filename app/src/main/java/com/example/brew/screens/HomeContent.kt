@@ -13,7 +13,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.brew.R
+import com.example.brew.ui.theme.BrewTheme
 
 // for each grid/row
 @Composable
@@ -38,5 +41,23 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     Column(modifier.verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(16.dp))
 
+        SearchBar(Modifier.padding(horizontal = 16.dp))
+
+        HomeSection(title = R.string.coffee_title) {
+            CoffeeGrid()
+        }
+
+        HomeSection(title = R.string.cafe_title) {
+            CafeElementRow()
+        }
+        Spacer(Modifier.height(16.dp))
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF1E1E1E)
+@Composable
+fun HomeScreenPreview() {
+    BrewTheme {
+        HomeScreen()
     }
 }

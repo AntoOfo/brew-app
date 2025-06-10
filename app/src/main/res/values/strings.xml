@@ -35,4 +35,7 @@
 
     <string name="turkish_coffee">Turkish Coffee</string>
     <string name="turkish_bio">Finely ground coffee simmered to a rich, unfiltered brew with deep intensity.</string>
+
+    <string name="coffee_title">Coffee Picks</string>
+    <string name="cafe_title">Nearby Cafes</string>
 </resources>
