@@ -10,10 +10,10 @@
     <string name="espresso_bio">Rich, bold shot of pure coffee with a smooth, intense flavour.</string>
 
     <string name="americano">Americano</string>
-    <string name="americano_bio">Smooth, rich espresso diluted with hot water for a balanced, clean taste.</string>
+    <string name="americano_bio">Smooth espresso diluted with hot water for a bold taste.</string>
 
     <string name="latte">Latte</string>
-    <string name="latte_bio">Smooth and creamy with steamed milk and a gentle, comforting taste.</string>
+    <string name="latte_bio">Creamy milk mixed with coffee for a smooth, mild drink.</string>
 
     <string name="cappuccino">Cappuccino</string>
     <string name="cappuccino_bio">Light, foamy top with a rich body and a well-rounded, velvety taste.</string>
@@ -22,19 +22,19 @@
     <string name="flatwhite_bio">A perfect balance of rich coffee and steamed milk.</string>
 
     <string name="mocha">Mocha</string>
-    <string name="mocha_bio">Rich blend of coffee and chocolate with a hint of sweetness.</string>
+    <string name="mocha_bio">Rich chocolate blended with smooth coffee and steamed milk.</string>
 
     <string name="macchiato">Macchiato</string>
     <string name="macchiato_bio">Sharp shot of coffee marked with a touch of milk for balance.</string>
 
     <string name="cold_brew">Cold Brew</string>
-    <string name="coldbrew_bio">Chilled and mellow, brewed slowly for a rich taste with gentle strength.</string>
+    <string name="coldbrew_bio">Slowly brewed coffee served cold for a smooth, refreshing taste.</string>
 
     <string name="long_black">Long Black</string>
-    <string name="longblack_bio">Hot water topped with espresso, offering a bold yet clean coffee experience.</string>
+    <string name="longblack_bio">Hot water topped with a shot of strong coffee for a bold flavour.</string>
 
     <string name="turkish_coffee">Turkish Coffee</string>
-    <string name="turkish_bio">Finely ground coffee simmered to a rich, unfiltered brew with deep intensity.</string>
+    <string name="turkish_bio">Finely ground coffee simmered to create a strong brew.</string>
 
     <string name="coffee_title">Coffee Picks</string>
     <string name="cafe_title">Nearby Cafes</string>
