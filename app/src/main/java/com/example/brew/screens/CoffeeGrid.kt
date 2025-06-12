@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.coffeeData
@@ -20,12 +21,16 @@ import com.example.brew.ui.theme.BrewTheme
 
 @Composable
 fun CoffeeGrid(modifier: Modifier = Modifier) {
+    val configuration = LocalConfiguration.current
+    val screenHeightDp = configuration.screenHeightDp.dp
+
+    val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 467.dp)
 
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.background,
         modifier = modifier
-            .height(467.dp)
+            .height(gridHeight)
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
     ) {

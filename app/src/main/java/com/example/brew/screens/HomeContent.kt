@@ -68,7 +68,7 @@ fun MyAppPortrait() {
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFF1E1E1E, heightDp = 800)
+@Preview(showBackground = true, backgroundColor = 0xFF1E1E1E, heightDp = 700)
 @Composable
 fun PortraitAppPreview() {
     MyAppPortrait()
