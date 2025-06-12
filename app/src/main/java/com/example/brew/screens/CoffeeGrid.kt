@@ -24,7 +24,7 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
     val configuration = LocalConfiguration.current
     val screenHeightDp = configuration.screenHeightDp.dp
 
-    val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 467.dp)
+    val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 490.dp)
 
     Surface(
         shape = MaterialTheme.shapes.medium,

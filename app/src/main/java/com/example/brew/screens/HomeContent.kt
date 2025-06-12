@@ -2,6 +2,7 @@ package com.example.brew.screens
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -68,10 +69,26 @@ fun MyAppPortrait() {
     }
 }
 
+@Composable
+fun MyAppLandscape() {
+    BrewTheme {
+        Row {
+            NavigationRail()
+            HomeScreen()
+        }
+    }
+}
+
 @Preview(showBackground = true, backgroundColor = 0xFF1E1E1E, heightDp = 700)
 @Composable
 fun PortraitAppPreview() {
     MyAppPortrait()
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF1E1E1E, widthDp = 860)
+@Composable
+fun LandscapeAppPreview() {
+    MyAppLandscape()
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFF1E1E1E)
