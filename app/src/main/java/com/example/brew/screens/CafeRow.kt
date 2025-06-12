@@ -2,6 +2,7 @@ package com.example.brew.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.ui.Modifier
@@ -13,7 +14,7 @@ import com.example.brew.ui.theme.BrewTheme
 fun CafeElementRow(modifier: Modifier = Modifier) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier
+        modifier = modifier.padding(horizontal = 16.dp)
     ) {
         items(8) { item ->
             CafeElement()

@@ -29,6 +29,7 @@ fun HomeSection(
         Text(
             stringResource(title),
             style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier
                 .paddingFromBaseline(bottom = 16.dp, top = 40.dp)
                 .padding(horizontal = 16.dp))
