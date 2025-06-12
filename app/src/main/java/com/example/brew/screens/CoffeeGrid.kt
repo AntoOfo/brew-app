@@ -25,7 +25,7 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.background,
         modifier = modifier
-            .height(440.dp)
+            .height(467.dp)
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
     ) {

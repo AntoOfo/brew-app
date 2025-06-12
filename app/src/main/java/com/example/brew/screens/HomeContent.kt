@@ -3,12 +3,14 @@ package com.example.brew.screens
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -39,7 +41,8 @@ fun HomeSection(
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    Column(modifier.verticalScroll(rememberScrollState())) {
+    Column(modifier = modifier
+        .verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(16.dp))
 
         SearchBar(Modifier.padding(horizontal = 16.dp))
@@ -51,8 +54,24 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         HomeSection(title = R.string.cafe_title) {
             CafeElementRow()
         }
-        Spacer(Modifier.height(16.dp))
+
     }
+}
+
+@Composable
+fun MyAppPortrait() {
+    BrewTheme {
+        Scaffold(bottomBar = { BottomNavigation() })
+        { paddingValues ->
+            HomeScreen(modifier =Modifier.padding(paddingValues))
+        }
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF1E1E1E, heightDp = 800)
+@Composable
+fun PortraitAppPreview() {
+    MyAppPortrait()
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFF1E1E1E)
