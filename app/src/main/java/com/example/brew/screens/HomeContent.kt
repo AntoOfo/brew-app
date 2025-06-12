@@ -11,7 +11,10 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -72,9 +75,27 @@ fun MyAppPortrait() {
 @Composable
 fun MyAppLandscape() {
     BrewTheme {
-        Row {
-            NavigationRail()
-            HomeScreen()
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Row {
+                NavigationRail()
+                HomeScreen()
+            }
+        }
+    }
+}
+
+@Composable
+fun MyApp(windowSize: WindowSizeClass) {
+
+    when (windowSize.widthSizeClass) {
+        WindowWidthSizeClass.Compact -> {
+            MyAppPortrait()
+        }
+        WindowWidthSizeClass.Expanded -> {
+            MyAppLandscape()
         }
     }
 }
