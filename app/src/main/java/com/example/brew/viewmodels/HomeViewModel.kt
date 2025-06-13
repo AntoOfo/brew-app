@@ -15,4 +15,9 @@ class HomeViewModel : ViewModel() {
     fun onSearchQueryChange(newQuery: String) {
         searchQuery = newQuery
     }
+
+    // empty liked set of coffee ids
+    var likedCoffee by mutableStateOf(setOf<Int>())
+        private set
+
 }
