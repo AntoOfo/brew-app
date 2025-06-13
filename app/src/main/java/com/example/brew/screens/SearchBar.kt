@@ -23,8 +23,8 @@ fun SearchBar(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier) {
     TextField(
-        value = "",
-        onValueChange = {},
+        value = value,
+        onValueChange = onValueChange,
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
