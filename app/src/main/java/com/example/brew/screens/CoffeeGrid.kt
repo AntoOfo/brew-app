@@ -15,13 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.brew.DrawableStringsSetup
 import com.example.brew.coffeeData
 import com.example.brew.coffeeData
 import com.example.brew.ui.theme.BrewTheme
 
 // grid that holds the coffee elements
 @Composable
-fun CoffeeGrid(modifier: Modifier = Modifier) {
+fun CoffeeGrid(
+    coffeeList: List<DrawableStringsSetup>,  // turning coffeedata to a list to be filtered
+    modifier: Modifier = Modifier) {
     val configuration = LocalConfiguration.current  // allows app to see used device specs
     val screenHeightDp = configuration.screenHeightDp.dp
 
@@ -41,7 +44,7 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = modifier
         ) {
-            items(coffeeData) { item ->     // populates grid with coffee data
+            items(coffeeList) { item ->     // populates grid with coffee data
                 CoffeeElement(
                     item.drawable,
                     item.coffeeText,
@@ -57,6 +60,9 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
 @Composable
 fun CoffeeGridPreview() {
     BrewTheme {
-        CoffeeGrid()
+        CoffeeGrid(
+            coffeeList = TODO(),
+            modifier = TODO()
+        )
     }
 }

@@ -21,8 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.brew.R
+import com.example.brew.coffeeData
 import com.example.brew.ui.theme.BrewTheme
+import com.example.brew.viewmodels.HomeViewModel
 
 // for each grid/row
 @Composable
@@ -45,15 +48,31 @@ fun HomeSection(
 
 // for search bar and both home sections
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    viewModel: HomeViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
+
+    val searchQuery = viewModel.searchQuery  // referring to viewmodel
+
+    // filters coffee title data from the strings setup
+    val filteredCoffeeList = coffeeData.filter {
+        stringResource(it.coffeeText).contains(searchQuery, ignoreCase = true)
+    }
+
     Column(modifier = modifier
         .verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(16.dp))
 
-        SearchBar(Modifier.padding(horizontal = 16.dp))
+        SearchBar(
+            // passing viewmodel state/event to searchbar
+            value = searchQuery,
+            onValueChange = viewModel::onSearchQueryChange,
+            Modifier.padding(horizontal = 16.dp))
 
         HomeSection(title = R.string.coffee_title) {
-            CoffeeGrid()
+            // list of elements shown will be whats searched
+            CoffeeGrid(coffeeList = filteredCoffeeList)
         }
 
         HomeSection(title = R.string.cafe_title) {
