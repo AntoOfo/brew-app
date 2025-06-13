@@ -12,8 +12,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.ui.theme.BrewTheme
 
+// holds the lazyrow for the cafe elements
 @Composable
 fun CafeElementRow(modifier: Modifier = Modifier) {
+    // slightly curved background to avoid sharp edge
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.background,
@@ -23,7 +25,7 @@ fun CafeElementRow(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = modifier
         ) {
-            items(8) { item ->
+            items(8) { item ->      // dummy size for now
                 CafeElement()
             }
         }

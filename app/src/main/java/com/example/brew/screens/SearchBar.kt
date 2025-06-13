@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.ui.theme.BrewTheme
 
+// search bar
 @Composable
 fun SearchBar(modifier: Modifier = Modifier) {
     TextField(

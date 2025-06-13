@@ -19,12 +19,13 @@ import com.example.brew.coffeeData
 import com.example.brew.coffeeData
 import com.example.brew.ui.theme.BrewTheme
 
+// grid that holds the coffee elements
 @Composable
 fun CoffeeGrid(modifier: Modifier = Modifier) {
-    val configuration = LocalConfiguration.current
+    val configuration = LocalConfiguration.current  // allows app to see used device specs
     val screenHeightDp = configuration.screenHeightDp.dp
 
-    val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 490.dp)
+    val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 490.dp)   // allows grid height to be dynamic based on screen height
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -35,12 +36,12 @@ fun CoffeeGrid(modifier: Modifier = Modifier) {
             .fillMaxWidth()
     ) {
         LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
+            columns = GridCells.Fixed(2),   // two elements per row
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = modifier
         ) {
-            items(coffeeData) { item ->
+            items(coffeeData) { item ->     // populates grid with coffee data
                 CoffeeElement(
                     item.drawable,
                     item.coffeeText,

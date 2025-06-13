@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BrewTheme {
                 val windowSizeClass = calculateWindowSizeClass(this)
-                MyApp(windowSizeClass)
+                MyApp(windowSizeClass)  // called myapp with observed rotated state to allow either landscape/portrait
             }
         }
     }

@@ -38,13 +38,14 @@ import com.example.brew.ui.theme.BrewTheme
 
 @Composable
 fun CoffeeElement(
+    // refers to the data class for the static strings
     @DrawableRes drawable: Int,
     @StringRes coffeeName: Int,
     @StringRes coffeeBio: Int,
     @StringRes coffeeStrength: Int,
     modifier: Modifier = Modifier) {
 
-    var isFavourite by rememberSaveable { mutableStateOf(false) }
+    var isFavourite by rememberSaveable { mutableStateOf(false) }  // remembers whats been saved & whats not
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -53,6 +54,7 @@ fun CoffeeElement(
             .fillMaxWidth()
             .height(145.dp)) {
 
+        // for the image, title and desc setup
         Column(
             horizontalAlignment = Alignment.Start,
             modifier = Modifier.fillMaxWidth()
@@ -60,7 +62,7 @@ fun CoffeeElement(
             Image(
                 painter = painterResource(drawable),
                 contentDescription = null,
-                alpha = 0.7F,
+                alpha = 0.7F,   // 70% opacity
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(60.dp)
@@ -81,6 +83,7 @@ fun CoffeeElement(
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
 
+            // for the bottom strength text and heart icon
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
@@ -94,7 +97,7 @@ fun CoffeeElement(
                     modifier = Modifier
                 )
                 IconButton(
-                    onClick = { isFavourite = !isFavourite },
+                    onClick = { isFavourite = !isFavourite },  // reverts current favourite state
                     modifier = Modifier.size(24.dp)
                 ) {
                     Icon(

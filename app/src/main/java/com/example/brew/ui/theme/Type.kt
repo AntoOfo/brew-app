@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.brew.ui.theme.Inter
 
+// custom typography with Inter
 val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = Inter,

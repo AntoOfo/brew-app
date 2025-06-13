@@ -38,6 +38,7 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+// custom theme
 private val BrewDarkColorScheme = darkColorScheme(
     background = Color(0xFF1E1E1E),
     surface = Color(0xFF282828),
@@ -47,6 +48,7 @@ private val BrewDarkColorScheme = darkColorScheme(
     onSecondary = Color.Black
 )
 
+// custom font
 val Inter = FontFamily(
     Font(R.font.inter_regular, FontWeight.Normal),
     Font(R.font.inter_medium, FontWeight.Medium),

@@ -3,6 +3,7 @@ package com.example.brew
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
+// strings setup for the coffee element
 data class DrawableStringsSetup(
     @DrawableRes val drawable: Int,
     @StringRes val coffeeText: Int,
@@ -10,6 +11,7 @@ data class DrawableStringsSetup(
     @StringRes val strengthText: Int
 )
 
+// list that holds the data for each coffee element
 val coffeeData = listOf(
     // espresso
     DrawableStringsSetup(

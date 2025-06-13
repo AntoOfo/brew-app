@@ -20,6 +20,7 @@ import com.example.brew.ui.theme.BrewTheme
 @Composable
 fun CafeElement(modifier: Modifier = Modifier) {
 
+    // curved background for cafe element
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
         color = MaterialTheme.colorScheme.surface,
@@ -27,6 +28,7 @@ fun CafeElement(modifier: Modifier = Modifier) {
             .width(170.dp)
             .height(48.dp)
     ) {
+        // attributes for the element
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -35,13 +37,13 @@ fun CafeElement(modifier: Modifier = Modifier) {
                 .padding(start = 8.dp, end = 8.dp, top = 8.dp)
         ) {
             Text(
-                text = "Ariosa Cafe",
+                text = "Ariosa Cafe",  // placeholder for now
                 style = MaterialTheme.typography.bodyLarge,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "5km away",
+                text = "5km away",   // placeholder
                 style = MaterialTheme.typography.bodySmall
             )
         }

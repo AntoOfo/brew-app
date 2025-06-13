@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.ui.theme.BrewTheme
 
+// bottom navigation bar
 @Composable
 fun BottomNavigation(modifier: Modifier = Modifier) {
     NavigationBar(
@@ -32,7 +33,7 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
         NavigationBarItem(
-            icon = {
+            icon = {        // left icon
                 Icon(
                     imageVector = Icons.Default.Home,
                     contentDescription = null
@@ -49,7 +50,7 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
         )
         )
         NavigationBarItem(
-            icon = {
+            icon = {        // right icon
                 Icon(
                     imageVector = Icons.Default.Favorite,
                     contentDescription = null
@@ -68,6 +69,7 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
     }
 }
 
+// navigation rail for landscape view
 @Composable
 fun NavigationRail(modifier: Modifier = Modifier) {
     NavigationRail(

@@ -43,6 +43,7 @@ fun HomeSection(
     }
 }
 
+// for search bar and both home sections
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier
@@ -62,6 +63,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     }
 }
 
+// apps portrait layout
 @Composable
 fun MyAppPortrait() {
     BrewTheme {
@@ -72,10 +74,11 @@ fun MyAppPortrait() {
     }
 }
 
+// apps landscape layout
 @Composable
 fun MyAppLandscape() {
     BrewTheme {
-        Surface(
+        Surface(        // manually set the background because the color disappears for some reason
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
@@ -87,6 +90,7 @@ fun MyAppLandscape() {
     }
 }
 
+// finalised app layout portrait/landscape to be called
 @Composable
 fun MyApp(windowSize: WindowSizeClass) {
 
