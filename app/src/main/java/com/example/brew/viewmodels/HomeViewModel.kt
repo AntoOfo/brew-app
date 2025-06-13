@@ -20,4 +20,13 @@ class HomeViewModel : ViewModel() {
     var likedCoffee by mutableStateOf(setOf<Int>())
         private set
 
+    // handles if a coffee is liked
+    fun toggleFavourite(coffeeResId: Int){
+        // if coffee id is already in the set of liked coffees
+        likedCoffee = if (likedCoffee.contains(coffeeResId)) {
+            likedCoffee - coffeeResId  // remove it
+        } else {
+            likedCoffee + coffeeResId
+        }
+    }
 }
