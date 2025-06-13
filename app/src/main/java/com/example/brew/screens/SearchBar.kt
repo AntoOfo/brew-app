@@ -18,7 +18,10 @@ import com.example.brew.ui.theme.BrewTheme
 
 // search bar
 @Composable
-fun SearchBar(modifier: Modifier = Modifier) {
+fun SearchBar(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier) {
     TextField(
         value = "",
         onValueChange = {},
@@ -51,6 +54,10 @@ fun SearchBar(modifier: Modifier = Modifier) {
 @Composable
 fun SearchBarPreview() {
     BrewTheme {
-        SearchBar()
+        SearchBar(
+            value = TODO(),
+            onValueChange = TODO(),
+            modifier = TODO()
+        )
     }
 }
