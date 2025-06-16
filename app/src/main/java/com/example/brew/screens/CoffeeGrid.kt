@@ -24,7 +24,10 @@ import com.example.brew.ui.theme.BrewTheme
 @Composable
 fun CoffeeGrid(
     coffeeList: List<DrawableStringsSetup>,  // turning coffeedata to a list to be filtered
+    likedCoffees: Set<Int>, // current liked coffee ids
+    onFavouriteToggle: (Int) -> Unit,
     modifier: Modifier = Modifier) {
+
     val configuration = LocalConfiguration.current  // allows app to see used device specs
     val screenHeightDp = configuration.screenHeightDp.dp
 
@@ -49,7 +52,9 @@ fun CoffeeGrid(
                     item.drawable,
                     item.coffeeText,
                     item.biotext,
-                    item.strengthText
+                    item.strengthText,
+                    likedCoffees.contains(item.coffeeText),
+                    { onFavouriteToggle(item.coffeeText) }
                 )
             }
         }
@@ -62,7 +67,9 @@ fun CoffeeGridPreview() {
     BrewTheme {
         CoffeeGrid(
             coffeeList = TODO(),
-            modifier = TODO()
+            modifier = TODO(),
+            likedCoffees = TODO(),
+            onFavouriteToggle = TODO()
         )
     }
 }
