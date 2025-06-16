@@ -29,4 +29,12 @@ class HomeViewModel : ViewModel() {
             likedCoffee + coffeeId
         }
     }
+
+    // for showing only the liked elements
+    var showOnlyLiked by mutableStateOf(false)
+        private set
+
+    fun toggleShowOnlyLiked() {
+        showOnlyLiked = !showOnlyLiked
+    }
 }
