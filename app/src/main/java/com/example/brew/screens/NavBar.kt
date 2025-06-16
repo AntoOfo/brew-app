@@ -24,10 +24,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.ui.theme.BrewTheme
+import com.example.brew.viewmodels.HomeViewModel
 
 // bottom navigation bar
 @Composable
-fun BottomNavigation(modifier: Modifier = Modifier) {
+fun BottomNavigation(
+    viewModel: HomeViewModel,
+    modifier: Modifier = Modifier) {
+    
+    val showOnlyLiked = viewModel.showOnlyLiked
+    
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.background,
         modifier = modifier
@@ -36,14 +42,18 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
             icon = {        // left icon
                 Icon(
                     imageVector = Icons.Default.Home,
-                    contentDescription = null
+                    contentDescription = "Home"
                 )
             },
             label = {
                 Text("Home")
             },
-            selected = true,
-            onClick = {},
+            selected = !showOnlyLiked,
+            onClick = {
+                if (showOnlyLiked) {
+                    viewModel.toggleShowOnlyLiked()
+                }
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = MaterialTheme.colorScheme.secondary,
                 selectedTextColor = MaterialTheme.colorScheme.secondary
@@ -53,14 +63,18 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
             icon = {        // right icon
                 Icon(
                     imageVector = Icons.Default.Favorite,
-                    contentDescription = null
+                    contentDescription = "Liked"
                 )
             },
             label = {
                 Text("Liked")
             },
-            selected = false,
-            onClick = {},
+            selected = showOnlyLiked,
+            onClick = {
+                if (!showOnlyLiked) {
+                    viewModel.toggleShowOnlyLiked()
+                }
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = MaterialTheme.colorScheme.secondary,
                 selectedTextColor = MaterialTheme.colorScheme.secondary
@@ -128,7 +142,10 @@ fun NavigationRail(modifier: Modifier = Modifier) {
 @Composable
 fun BottomNavigationPreview() {
     BrewTheme {
-        BottomNavigation()
+        BottomNavigation(
+            viewModel = TODO(),
+            modifier = TODO()
+        )
     }
 }
 
