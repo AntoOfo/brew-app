@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,9 +44,10 @@ fun CoffeeElement(
     @StringRes coffeeName: Int,
     @StringRes coffeeBio: Int,
     @StringRes coffeeStrength: Int,
+    isFavourite: Boolean,
+    onFavouriteToggle: () -> Unit,
     modifier: Modifier = Modifier) {
-
-    var isFavourite by rememberSaveable { mutableStateOf(false) }  // remembers whats been saved & whats not
+    
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -97,11 +99,12 @@ fun CoffeeElement(
                     modifier = Modifier
                 )
                 IconButton(
-                    onClick = { isFavourite = !isFavourite },  // reverts current favourite state
+                    onClick = onFavouriteToggle,  // toggles onFavourite
                     modifier = Modifier.size(24.dp)
                 ) {
                     Icon(
-                        Icons.Outlined.Favorite,
+                        // if not clicked, show outline icon... otherwise filled icon
+                        imageVector = if (isFavourite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
                         contentDescription = "Favourite",
                         tint = MaterialTheme.colorScheme.secondary,
                         modifier = Modifier
@@ -121,6 +124,10 @@ fun CoffeeElementPreview() {
             R.drawable.espresso,
             R.string.espresso,
             R.string.espresso_bio,
-            R.string.strong)
+            R.string.strong,
+            isFavourite = TODO(),
+            onFavouriteToggle = TODO(),
+            modifier = TODO()
+        )
     }
 }
