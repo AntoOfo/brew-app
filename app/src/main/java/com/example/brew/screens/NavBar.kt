@@ -85,7 +85,12 @@ fun BottomNavigation(
 
 // navigation rail for landscape view
 @Composable
-fun NavigationRail(modifier: Modifier = Modifier) {
+fun NavigationRail(
+    viewModel: HomeViewModel,
+    modifier: Modifier = Modifier) {
+    
+    val showOnlyLiked = viewModel.showOnlyLiked
+    
     NavigationRail(
         modifier = modifier.padding(
             start = 8.dp, end = 8.dp),
@@ -100,14 +105,18 @@ fun NavigationRail(modifier: Modifier = Modifier) {
                 icon = {
                     Icon(
                         imageVector = Icons.Default.Home,
-                        contentDescription = null
+                        contentDescription = "Home"
                     )
                 },
                 label = {
                     Text("Home")
                 },
-                selected = true,
-                onClick = {},
+                selected = !showOnlyLiked,
+                onClick = {
+                    if (showOnlyLiked) {
+                        viewModel.toggleShowOnlyLiked()
+                    }
+                },
                 colors = NavigationRailItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.secondary,
                     selectedTextColor = MaterialTheme.colorScheme.secondary
@@ -120,14 +129,18 @@ fun NavigationRail(modifier: Modifier = Modifier) {
                 icon = {
                     Icon(
                         imageVector = Icons.Default.Favorite,
-                        contentDescription = null
+                        contentDescription = "Liked"
                     )
                 },
                 label = {
                     Text("Liked")
                 },
-                selected = false,
-                onClick = {},
+                selected = showOnlyLiked,
+                onClick = {
+                    if (!showOnlyLiked) {
+                        viewModel.toggleShowOnlyLiked()
+                    }
+                },
                 colors = NavigationRailItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.secondary,
                     selectedTextColor = MaterialTheme.colorScheme.secondary
@@ -153,6 +166,13 @@ fun BottomNavigationPreview() {
 @Composable
 fun NavigationRailPreview() {
     BrewTheme {
-        NavigationRail()
+        NavigationRail(
+            modifier = TODO(),
+            containerColor = TODO(),
+            contentColor = TODO(),
+            header = TODO(),
+            windowInsets = TODO(),
+            content = TODO()
+        )
     }
 }
