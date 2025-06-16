@@ -53,7 +53,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
 
-    val searchQuery = viewModel.searchQuery  // referring to viewmodel
+    val searchQuery = viewModel.searchQuery  // referring to viewmodel for searches
+    val likedCoffees = viewModel.likedCoffee // viewmodel for liked coffees
 
     // filters coffee title data from the strings setup
     val filteredCoffeeList = coffeeData.filter {
@@ -72,7 +73,10 @@ fun HomeScreen(
 
         HomeSection(title = R.string.coffee_title) {
             // list of elements shown will be whats searched
-            CoffeeGrid(coffeeList = filteredCoffeeList)
+            CoffeeGrid(
+                coffeeList = filteredCoffeeList,
+                likedCoffees = likedCoffees,
+                onFavouriteToggle = viewModel::toggleFavourite)
         }
 
         HomeSection(title = R.string.cafe_title) {
