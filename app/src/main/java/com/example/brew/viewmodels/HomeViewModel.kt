@@ -21,12 +21,12 @@ class HomeViewModel : ViewModel() {
         private set
 
     // handles if a coffee is liked
-    fun toggleFavourite(coffeeResId: Int){
+    fun toggleFavourite(coffeeId: Int){
         // if coffee id is already in the set of liked coffees
-        likedCoffee = if (likedCoffee.contains(coffeeResId)) {
-            likedCoffee - coffeeResId  // remove it
+        likedCoffee = if (likedCoffee.contains(coffeeId)) {
+            likedCoffee - coffeeId  // remove it
         } else {
-            likedCoffee + coffeeResId
+            likedCoffee + coffeeId
         }
     }
 }

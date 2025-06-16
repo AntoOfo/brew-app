@@ -24,7 +24,7 @@ import com.example.brew.ui.theme.BrewTheme
 @Composable
 fun CoffeeGrid(
     coffeeList: List<DrawableStringsSetup>,  // turning coffeedata to a list to be filtered
-    likedCoffees: Set<Int>, // current liked coffee ids
+    likedCoffees: List<Int>, // current liked coffee ids
     onFavouriteToggle: (Int) -> Unit,
     modifier: Modifier = Modifier) {
 
@@ -44,8 +44,7 @@ fun CoffeeGrid(
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),   // two elements per row
             horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = modifier
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(coffeeList) { item ->     // populates grid with coffee data
                 CoffeeElement(
@@ -53,8 +52,8 @@ fun CoffeeGrid(
                     item.coffeeText,
                     item.biotext,
                     item.strengthText,
-                    likedCoffees.contains(item.coffeeText),
-                    { onFavouriteToggle(item.coffeeText) }
+                    likedCoffees.contains(item.id),
+                    { onFavouriteToggle(item.id) }
                 )
             }
         }

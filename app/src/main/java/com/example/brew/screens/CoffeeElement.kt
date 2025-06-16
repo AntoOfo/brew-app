@@ -31,6 +31,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,7 +49,7 @@ fun CoffeeElement(
     isFavourite: Boolean,
     onFavouriteToggle: () -> Unit,
     modifier: Modifier = Modifier) {
-    
+
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -104,7 +106,7 @@ fun CoffeeElement(
                 ) {
                     Icon(
                         // if not clicked, show outline icon... otherwise filled icon
-                        imageVector = if (isFavourite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                        imageVector = if (isFavourite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         contentDescription = "Favourite",
                         tint = MaterialTheme.colorScheme.secondary,
                         modifier = Modifier

@@ -5,6 +5,7 @@ import androidx.annotation.StringRes
 
 // strings setup for the coffee element
 data class DrawableStringsSetup(
+    val id: Int,
     @DrawableRes val drawable: Int,
     @StringRes val coffeeText: Int,
     @StringRes val biotext: Int,
@@ -15,6 +16,7 @@ data class DrawableStringsSetup(
 val coffeeData = listOf(
     // espresso
     DrawableStringsSetup(
+        id = 1,
         R.drawable.espresso,
         R.string.espresso,
         R.string.espresso_bio,
@@ -22,6 +24,7 @@ val coffeeData = listOf(
     ),
     // americano
     DrawableStringsSetup(
+        id = 2,
         R.drawable.americano,
         R.string.americano,
         R.string.americano_bio,
@@ -29,6 +32,7 @@ val coffeeData = listOf(
     ),
     //latte
     DrawableStringsSetup(
+        id = 3,
         R.drawable.latte,
         R.string.latte,
         R.string.latte_bio,
@@ -36,6 +40,7 @@ val coffeeData = listOf(
     ),
     // cappuccino
     DrawableStringsSetup(
+        id = 4,
         R.drawable.cappuccino,
         R.string.cappuccino,
         R.string.cappuccino_bio,
@@ -43,6 +48,7 @@ val coffeeData = listOf(
     ),
     // flat white
     DrawableStringsSetup(
+        id = 5,
         R.drawable.flatwhite,
         R.string.flat_white,
         R.string.flatwhite_bio,
@@ -50,6 +56,7 @@ val coffeeData = listOf(
     ),
     // mocha
     DrawableStringsSetup(
+        id = 6,
         R.drawable.mocha,
         R.string.mocha,
         R.string.mocha_bio,
@@ -57,6 +64,7 @@ val coffeeData = listOf(
     ),
     // macchiato
     DrawableStringsSetup(
+        id = 7,
         R.drawable.macchiato,
         R.string.macchiato,
         R.string.macchiato_bio,
@@ -64,6 +72,7 @@ val coffeeData = listOf(
     ),
     // cold brew
     DrawableStringsSetup(
+        id = 8,
         R.drawable.coldbrew,
         R.string.cold_brew,
         R.string.coldbrew_bio,
@@ -71,6 +80,7 @@ val coffeeData = listOf(
     ),
     // long black
     DrawableStringsSetup(
+        id = 9,
         R.drawable.longblack,
         R.string.long_black,
         R.string.longblack_bio,
@@ -78,6 +88,7 @@ val coffeeData = listOf(
     ),
     // turkish
     DrawableStringsSetup(
+        id = 10,
         R.drawable.turkish,
         R.string.turkish_coffee,
         R.string.turkish_bio,

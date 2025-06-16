@@ -17,6 +17,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,6 +59,8 @@ fun HomeScreen(
     val searchQuery = viewModel.searchQuery  // referring to viewmodel for searches
     val likedCoffees = viewModel.likedCoffee // viewmodel for liked coffees
 
+    val likedCoffeesList = likedCoffees.toList()
+
     // filters coffee title data from the strings setup
     val filteredCoffeeList = coffeeData.filter {
         stringResource(it.coffeeText).contains(searchQuery, ignoreCase = true)
@@ -75,8 +80,9 @@ fun HomeScreen(
             // list of elements shown will be whats searched
             CoffeeGrid(
                 coffeeList = filteredCoffeeList,
-                likedCoffees = likedCoffees,
-                onFavouriteToggle = viewModel::toggleFavourite)
+                likedCoffees = likedCoffeesList,
+                onFavouriteToggle = {coffeeId -> viewModel.toggleFavourite(coffeeId)}
+            )
         }
 
         HomeSection(title = R.string.cafe_title) {
