@@ -87,7 +87,7 @@ fun HomeScreen(
         HomeSection(title = R.string.coffee_title) {
             // list of elements shown will be whats searched
             CoffeeGrid(
-                coffeeList = filteredCoffeeList,
+                coffeeList = displayCoffeeList,
                 likedCoffees = likedCoffeesList,
                 onFavouriteToggle = {coffeeId -> viewModel.toggleFavourite(coffeeId)}
             )
