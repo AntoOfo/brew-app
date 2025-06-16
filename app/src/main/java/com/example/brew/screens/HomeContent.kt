@@ -58,12 +58,20 @@ fun HomeScreen(
 
     val searchQuery = viewModel.searchQuery  // referring to viewmodel for searches
     val likedCoffees = viewModel.likedCoffee // viewmodel for liked coffees
-
     val likedCoffeesList = likedCoffees.toList()
+
+    val showOnlyLiked = viewModel.showOnlyLiked
 
     // filters coffee title data from the strings setup
     val filteredCoffeeList = coffeeData.filter {
         stringResource(it.coffeeText).contains(searchQuery, ignoreCase = true)
+    }
+
+    // furthers filters with the liked elements
+    val displayCoffeeList = if (showOnlyLiked) {
+        filteredCoffeeList.filter { likedCoffees.contains(it.id) }
+    } else {
+        filteredCoffeeList
     }
 
     Column(modifier = modifier
