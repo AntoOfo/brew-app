@@ -103,10 +103,13 @@ fun HomeScreen(
 // apps portrait layout
 @Composable
 fun MyAppPortrait() {
+    val viewModel: HomeViewModel = viewModel()
     BrewTheme {
-        Scaffold(bottomBar = { BottomNavigation() })
+        Scaffold(bottomBar = { BottomNavigation(viewModel = viewModel) })
         { paddingValues ->
-            HomeScreen(modifier =Modifier.padding(paddingValues))
+            HomeScreen(
+                viewModel = viewModel,
+                modifier =Modifier.padding(paddingValues))
         }
     }
 }
@@ -114,14 +117,15 @@ fun MyAppPortrait() {
 // apps landscape layout
 @Composable
 fun MyAppLandscape() {
+    val viewModel: HomeViewModel = viewModel()
     BrewTheme {
         Surface(        // manually set the background because the color disappears for some reason
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
             Row {
-                NavigationRail()
-                HomeScreen()
+                NavigationRail(viewModel = viewModel)
+                HomeScreen(viewModel = viewModel)
             }
         }
     }
