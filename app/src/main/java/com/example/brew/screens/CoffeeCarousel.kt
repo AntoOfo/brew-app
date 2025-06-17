@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.CoffeeDetails
 import com.example.brew.coffeeDetails
+import com.example.brew.ui.theme.BrewTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,9 +51,9 @@ fun HorizontalCarousel(coffeeDetails: CoffeeDetails) {
 @Preview(showBackground = true, backgroundColor = 0xFF1E1E1E)
 @Composable
 fun HorizontalCarouselLattePreview() {
-    // Get the latte coffeeDetails object (id = 3)
-    val latte = coffeeDetails.first { it.id == 1 }
+    BrewTheme {
+        val latte = coffeeDetails.first { it.id == 3 }
 
-    // Show the carousel using latte images
-    HorizontalCarousel(coffeeDetails = latte)
+        HorizontalCarousel(coffeeDetails = latte)
+    }
 }

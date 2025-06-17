@@ -38,6 +38,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.brew.screens.HorizontalCarousel
 import com.example.brew.screens.MyApp
 import com.example.brew.screens.MyAppPortrait
 import com.example.brew.ui.theme.BrewTheme
@@ -48,9 +49,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val coffee = coffeeDetails.first { it.id == 1 }
             BrewTheme {
-                val windowSizeClass = calculateWindowSizeClass(this)
-                MyApp(windowSizeClass)  // called myapp with observed rotated state to allow either landscape/portrait
+                HorizontalCarousel(coffeeDetails = coffee)
+                //val windowSizeClass = calculateWindowSizeClass(this)
+                //MyApp(windowSizeClass)  // called myapp with observed rotated state to allow either landscape/portrait
             }
         }
     }
