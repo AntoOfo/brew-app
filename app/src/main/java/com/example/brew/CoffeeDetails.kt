@@ -199,5 +199,5 @@ val coffeeDetails = listOf(
             R.drawable.turk_4,
             R.drawable.turk_5
         )
-    ),
+    )
 )
