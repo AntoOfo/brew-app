@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 data class CoffeeDetails(
     val id: Int,
     val origin: String,
+    val type: String,
     val instructions: List<String>,
     @DrawableRes val imageCarousel: List<Int>
 )
@@ -14,6 +15,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 1,
         origin = "Italy",
+        type = "Espresso",
         instructions = listOf(
             "1. Finely grind high-quality coffee beans.",
             "2. Fill and tamp the portafilter firmly.",
@@ -33,6 +35,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 2,
         origin = "United States",
+        type = "Americano",
         instructions = listOf(
             "1. Brew a standard espresso shot.",
             "2. Heat fresh water to near boiling.",
@@ -52,6 +55,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 3,
         origin = "Italy",
+        type = "Latte",
         instructions = listOf(
             "1. Pull a fresh shot of espresso.",
             "2. Steam milk until it's smooth and slightly frothy.",
@@ -71,6 +75,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 4,
         origin = "Italy",
+        type = "Cappuccino",
         instructions = listOf(
             "1. Brew a strong espresso shot.",
             "2. Steam milk to create a thick foam.",
@@ -90,6 +95,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 5,
         origin = "Australia/New Zealand",
+        type = "Flat White",
         instructions = listOf(
             "1. Prepare a double shot of espresso.",
             "2. Steam milk to a silky microfoam texture.",
@@ -109,6 +115,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 6,
         origin = "Yemen",
+        type = "Mocha",
         instructions = listOf(
             "1. Brew a shot of espresso.",
             "2. Mix with 1-2 tsp of chocolate syrup or cocoa.",
@@ -128,6 +135,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 7,
         origin = "Italy",
+        type = "Macchiato",
         instructions = listOf(
             "1. Pull a single or double shot of espresso.",
             "2. Steam a small amount of milk.",
@@ -147,6 +155,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 8,
         origin = "Japan",
+        type = "Cold Brew",
         instructions = listOf(
             "1. Coarsely grind coffee beans.",
             "2. Combine coffee and cold water in a jar (1:8 ratio).",
@@ -166,6 +175,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 9,
         origin = "Australia/New Zealand",
+        type = "Long Black",
         instructions = listOf(
             "1. Heat water to just below boiling.",
             "2. Pour hot water into a cup (about 2/3 full).",
@@ -185,6 +195,7 @@ val coffeeDetails = listOf(
     CoffeeDetails(
         id = 10,
         origin = "Turkey",
+        type = "Turkish Coffee",
         instructions = listOf(
             "1. Finely grind coffee beans to a powder.",
             "2. Mix coffee, water, and sugar in a cezve.",

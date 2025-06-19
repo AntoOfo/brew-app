@@ -12,7 +12,7 @@ val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 34.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = Inter,
@@ -23,6 +23,16 @@ val Typography = Typography(
         fontFamily = Inter,
         fontWeight = FontWeight.Light,
         fontSize = 9.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.Normal,
+        fontSize = 15.sp
     )
     /* Other default text styles to override
     titleLarge = TextStyle(
