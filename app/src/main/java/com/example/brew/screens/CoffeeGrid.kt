@@ -1,5 +1,6 @@
 package com.example.brew.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,7 @@ fun CoffeeGrid(
     coffeeList: List<DrawableStringsSetup>,  // turning coffeedata to a list to be filtered
     likedCoffees: List<Int>, // current liked coffee ids
     onFavouriteToggle: (Int) -> Unit,
+    onItemClick: (Int) -> Unit,    // clickable item param
     modifier: Modifier = Modifier) {
 
     val configuration = LocalConfiguration.current  // allows app to see used device specs
@@ -52,8 +54,9 @@ fun CoffeeGrid(
                     item.coffeeText,
                     item.biotext,
                     item.strengthText,
-                    likedCoffees.contains(item.id),
-                    { onFavouriteToggle(item.id) }
+                    likedCoffees.contains(item.id),  // id pass
+                    { onFavouriteToggle(item.id) },  // id pass for favouritng
+                    modifier = Modifier.clickable { onItemClick(item.id) }  // passing in the ids to be matched
                 )
             }
         }
@@ -68,7 +71,8 @@ fun CoffeeGridPreview() {
             coffeeList = TODO(),
             modifier = TODO(),
             likedCoffees = TODO(),
-            onFavouriteToggle = TODO()
+            onFavouriteToggle = TODO(),
+            onItemClick = TODO()
         )
     }
 }
