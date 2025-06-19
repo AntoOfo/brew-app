@@ -19,14 +19,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.brew.CoffeeDetails
 import com.example.brew.R
 import com.example.brew.coffeeData
+import com.example.brew.coffeeDetails
 import com.example.brew.ui.theme.BrewTheme
 import com.example.brew.viewmodels.HomeViewModel
 
@@ -74,6 +78,9 @@ fun HomeScreen(
         filteredCoffeeList
     }
 
+    var selectedCoffee by remember { mutableStateOf<CoffeeDetails?>(null) }
+
+
     Column(modifier = modifier
         .verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(16.dp))
@@ -89,7 +96,11 @@ fun HomeScreen(
             CoffeeGrid(
                 coffeeList = displayCoffeeList,
                 likedCoffees = likedCoffeesList,
-                onFavouriteToggle = {coffeeId -> viewModel.toggleFavourite(coffeeId)}
+                onFavouriteToggle = {coffeeId -> viewModel.toggleFavourite(coffeeId)},
+                onItemClick = { clickedId ->
+                    val match = coffeeDetails.find { it.id == clickedId}
+                    if (match != null) selectedCoffee = match
+                }
             )
         }
 
