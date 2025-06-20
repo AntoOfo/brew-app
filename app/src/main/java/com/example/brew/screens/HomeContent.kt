@@ -1,5 +1,6 @@
 package com.example.brew.screens
 
+import android.content.res.Configuration
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -153,15 +155,15 @@ fun MyAppLandscape() {
 
 // finalised app layout portrait/landscape to be called
 @Composable
-fun MyApp(windowSize: WindowSizeClass) {
+fun MyApp() {
 
-    when (windowSize.widthSizeClass) {
-        WindowWidthSizeClass.Compact -> {
-            MyAppPortrait()
-        }
-        WindowWidthSizeClass.Expanded -> {
-            MyAppLandscape()
-        }
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+    if (isLandscape) {
+        MyAppLandscape()
+    } else {
+        MyAppPortrait()
     }
 }
 
