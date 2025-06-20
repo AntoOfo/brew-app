@@ -79,7 +79,7 @@ fun HomeScreen(
     }
 
     var selectedCoffee by remember { mutableStateOf<CoffeeDetails?>(null) }
-
+    val sheetVisible = selectedCoffee != null
 
     Column(modifier = modifier
         .verticalScroll(rememberScrollState())) {
@@ -102,6 +102,15 @@ fun HomeScreen(
                     if (match != null) selectedCoffee = match
                 }
             )
+        }
+
+        if (sheetVisible) {
+            selectedCoffee?.let { coffee ->
+                CoffeeDetailsSheet(
+                    coffee = coffee,
+                    onDismiss = { selectedCoffee = null }
+                )
+            }
         }
 
         HomeSection(title = R.string.cafe_title) {

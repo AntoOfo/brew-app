@@ -52,7 +52,7 @@ fun CoffeeDetailsSheet(
             )
             // origin
             Text(
-                text = "Origin • ${coffee.origin}",
+                text = "Origin: ${coffee.origin}",
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(
                     horizontal = 21.dp, vertical = 16.dp
