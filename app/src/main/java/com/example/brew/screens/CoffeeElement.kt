@@ -60,7 +60,7 @@ fun CoffeeElement(
 
     // scale animation for heart
     val scale by animateFloatAsState(
-        targetValue = if (trackAnim) 1.2f else 1f,
+        targetValue = if (trackAnim) 1.4f else 1f,
         animationSpec = tween(durationMillis = 150),
         label = "heartScale"
     )
@@ -68,7 +68,7 @@ fun CoffeeElement(
     LaunchedEffect(isFavourite) {
         // trigger scale up then down
         trackAnim = true
-        delay(120)
+        delay(80)
         trackAnim = false
     }
 
