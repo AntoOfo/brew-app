@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
@@ -62,23 +63,46 @@ fun CoffeeGrid(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             itemsIndexed(coffeeList) { index, item ->     // populates grid with coffee data
+                // general grid animation
 
                 // tracks if item should visible
                 var visible by remember { mutableStateOf(false) }
                 // fade in animation
                 val alpha by animateFloatAsState(
                     targetValue = if (visible) 1f else 0f,
-                    animationSpec = tween(durationMillis = 250, delayMillis = index*50)
+                    animationSpec = tween(durationMillis = 250, delayMillis = index*50),
+                    label = "fadeInAnimation"
                 )
                 // slide in animation
                 val offsetY by animateIntAsState(
                     targetValue = if (visible) 0 else 30,
-                    animationSpec = tween(durationMillis = 250, delayMillis = index*50)
+                    animationSpec = tween(durationMillis = 250, delayMillis = index*50),
+                    label = "slideInAnimation"
+
                 )
 
                 LaunchedEffect(Unit) {  // stagger delay if needed
                     visible = true
                 }
+
+                // element animation
+
+                var isClicked by remember { mutableStateOf(false) }
+
+                // scale animation
+                val scale by animateFloatAsState(
+                    targetValue = if (isClicked) 0.95f else 1f,
+                    animationSpec = tween(durationMillis = 120),
+                    label = "scaleAnimation"
+                )
+
+                LaunchedEffect(isClicked) {
+                    if (isClicked) {
+                        delay(100)
+                        isClicked = false
+                    }
+                }
+
                 CoffeeElement(
                     item.drawable,
                     item.coffeeText,
@@ -87,9 +111,15 @@ fun CoffeeGrid(
                     likedCoffees.contains(item.id),  // id pass
                     { onFavouriteToggle(item.id) },  // id pass for favouritng
                     modifier = Modifier
+                        .graphicsLayer {
+                            scaleX = scale
+                            scaleY = scale
+                        }
                         .alpha(alpha)
                         .offset { IntOffset(0, offsetY) }
-                        .clickable { onItemClick(item.id) }  // passing in the ids to be matched
+                        .clickable {
+                            isClicked = true
+                            onItemClick(item.id) }  // passing in the ids to be matched
                 )
             }
         }
