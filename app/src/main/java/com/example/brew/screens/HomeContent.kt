@@ -2,10 +2,12 @@ package com.example.brew.screens
 
 import android.content.res.Configuration
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
@@ -23,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -62,6 +65,10 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
 
+    val configuration = LocalConfiguration.current  // allows app to see used device specs
+    val screenHeightDp = configuration.screenHeightDp.dp
+    val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 490.dp)
+
     val searchQuery = viewModel.searchQuery  // referring to viewmodel for searches
     val likedCoffees = viewModel.likedCoffee // viewmodel for liked coffees
     val likedCoffeesList = likedCoffees.toList()
@@ -96,11 +103,18 @@ fun HomeScreen(
         HomeSection(title = R.string.coffee_title) {
             // when theres no liked elements but btn is clicked
             if (displayCoffeeList.isEmpty() && showOnlyLiked) {
-                Text(
-                    text = "No liked coffees yet!",
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(24.dp)
-                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(gridHeight),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "No liked coffees yet!",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(24.dp)
+                    )
+                }
             } else {
                 // list of elements shown will be whats searched
                 CoffeeGrid(
