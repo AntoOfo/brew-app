@@ -30,14 +30,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.annotation.StringRes
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.brew.R
 import com.example.brew.ui.theme.BrewTheme
+import kotlinx.coroutines.delay
 
 @Composable
 fun CoffeeElement(
@@ -50,6 +56,21 @@ fun CoffeeElement(
     onFavouriteToggle: () -> Unit,
     modifier: Modifier = Modifier) {
 
+    var trackAnim by remember { mutableStateOf(false)}
+
+    // scale animation for heart
+    val scale by animateFloatAsState(
+        targetValue = if (trackAnim) 1.2f else 1f,
+        animationSpec = tween(durationMillis = 150),
+        label = "heartScale"
+    )
+
+    LaunchedEffect(isFavourite) {
+        // trigger scale up then down
+        trackAnim = true
+        delay(120)
+        trackAnim = false
+    }
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -100,9 +121,12 @@ fun CoffeeElement(
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier
                 )
+
                 IconButton(
                     onClick = onFavouriteToggle,  // toggles onFavourite
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier
+                        .size(24.dp)
+                        .graphicsLayer(scaleX = scale, scaleY = scale)
                 ) {
                     Icon(
                         // if not clicked, show outline icon... otherwise filled icon
