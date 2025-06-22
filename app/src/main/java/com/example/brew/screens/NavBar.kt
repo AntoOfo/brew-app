@@ -1,5 +1,6 @@
 package com.example.brew.screens
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -40,10 +41,15 @@ fun BottomNavigation(
     ) {
         NavigationBarItem(
             icon = {        // left icon
-                Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = "Home"
-                )
+                Crossfade(targetState = !showOnlyLiked) { selected ->
+                    Icon(
+                        imageVector = Icons.Default.Home,
+                        contentDescription = "Home",
+                        tint = if (selected) MaterialTheme.colorScheme.secondary
+                        else MaterialTheme.colorScheme.onBackground
+
+                    )
+                }
             },
             label = {
                 Text("Home")
@@ -61,10 +67,14 @@ fun BottomNavigation(
         )
         NavigationBarItem(
             icon = {        // right icon
-                Icon(
-                    imageVector = Icons.Default.Favorite,
-                    contentDescription = "Liked"
-                )
+                Crossfade(targetState = showOnlyLiked) { selected ->
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = "Liked",
+                        tint = if (selected) MaterialTheme.colorScheme.secondary
+                        else MaterialTheme.colorScheme.onBackground
+                    )
+                }
             },
             label = {
                 Text("Liked")
