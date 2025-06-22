@@ -94,16 +94,25 @@ fun HomeScreen(
             Modifier.padding(horizontal = 16.dp))
 
         HomeSection(title = R.string.coffee_title) {
-            // list of elements shown will be whats searched
-            CoffeeGrid(
-                coffeeList = displayCoffeeList,
-                likedCoffees = likedCoffeesList,
-                onFavouriteToggle = {coffeeId -> viewModel.toggleFavourite(coffeeId)},
-                onItemClick = { clickedId ->
-                    val match = coffeeDetails.find { it.id == clickedId}
-                    if (match != null) selectedCoffee = match
-                }
-            )
+            // when theres no liked elements but btn is clicked
+            if (displayCoffeeList.isEmpty() && showOnlyLiked) {
+                Text(
+                    text = "No liked coffees yet!",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(24.dp)
+                )
+            } else {
+                // list of elements shown will be whats searched
+                CoffeeGrid(
+                    coffeeList = displayCoffeeList,
+                    likedCoffees = likedCoffeesList,
+                    onFavouriteToggle = { coffeeId -> viewModel.toggleFavourite(coffeeId) },
+                    onItemClick = { clickedId ->
+                        val match = coffeeDetails.find { it.id == clickedId }
+                        if (match != null) selectedCoffee = match
+                    }
+                )
+            }
         }
 
         if (sheetVisible) {
