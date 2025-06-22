@@ -47,7 +47,6 @@ fun BottomNavigation(
                         contentDescription = "Home",
                         tint = if (selected) MaterialTheme.colorScheme.secondary
                         else MaterialTheme.colorScheme.onBackground
-
                     )
                 }
             },
@@ -113,10 +112,14 @@ fun NavigationRail(
         ) {
             NavigationRailItem(
                 icon = {
-                    Icon(
-                        imageVector = Icons.Default.Home,
-                        contentDescription = "Home"
-                    )
+                    Crossfade(targetState = !showOnlyLiked) { selected ->
+                        Icon(
+                            imageVector = Icons.Default.Home,
+                            contentDescription = "Home",
+                            tint = if (selected) MaterialTheme.colorScheme.secondary
+                            else MaterialTheme.colorScheme.onBackground
+                        )
+                    }
                 },
                 label = {
                     Text("Home")
@@ -137,10 +140,14 @@ fun NavigationRail(
 
             NavigationRailItem(
                 icon = {
-                    Icon(
-                        imageVector = Icons.Default.Favorite,
-                        contentDescription = "Liked"
-                    )
+                    Crossfade(targetState = showOnlyLiked) { selected ->
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = "Liked",
+                            tint = if (selected) MaterialTheme.colorScheme.secondary
+                            else MaterialTheme.colorScheme.onBackground
+                        )
+                    }
                 },
                 label = {
                     Text("Liked")
