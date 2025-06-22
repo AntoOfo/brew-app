@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -60,23 +61,22 @@ fun CoffeeGrid(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(coffeeList, key = {it.id}) { item ->     // populates grid with coffee data
+            itemsIndexed(coffeeList) { index, item ->     // populates grid with coffee data
 
                 // tracks if item should visible
                 var visible by remember { mutableStateOf(false) }
                 // fade in animation
                 val alpha by animateFloatAsState(
                     targetValue = if (visible) 1f else 0f,
-                    animationSpec = tween(durationMillis = 250, delayMillis = 50)
+                    animationSpec = tween(durationMillis = 250, delayMillis = index*50)
                 )
                 // slide in animation
                 val offsetY by animateIntAsState(
                     targetValue = if (visible) 0 else 30,
-                    animationSpec = tween(durationMillis = 250, delayMillis = 50)
+                    animationSpec = tween(durationMillis = 250, delayMillis = index*50)
                 )
 
-                LaunchedEffect(Unit) {
-                    delay(50)  // stagger delay if needed
+                LaunchedEffect(Unit) {  // stagger delay if needed
                     visible = true
                 }
                 CoffeeElement(
