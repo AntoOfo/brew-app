@@ -1,10 +1,14 @@
 package com.example.brew.screens
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -12,14 +16,22 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.example.brew.DrawableStringsSetup
 import com.example.brew.coffeeData
 import com.example.brew.coffeeData
 import com.example.brew.ui.theme.BrewTheme
+import kotlinx.coroutines.delay
 
 // grid that holds the coffee elements
 @Composable
@@ -48,7 +60,25 @@ fun CoffeeGrid(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(coffeeList) { item ->     // populates grid with coffee data
+            items(coffeeList, key = {it.id}) { item ->     // populates grid with coffee data
+
+                // tracks if item should visible
+                var visible by remember { mutableStateOf(false) }
+                // fade in animation
+                val alpha by animateFloatAsState(
+                    targetValue = if (visible) 1f else 0f,
+                    animationSpec = tween(durationMillis = 250, delayMillis = 50)
+                )
+                // slide in animation
+                val offsetY by animateIntAsState(
+                    targetValue = if (visible) 0 else 30,
+                    animationSpec = tween(durationMillis = 250, delayMillis = 50)
+                )
+
+                LaunchedEffect(Unit) {
+                    delay(50)  // stagger delay if needed
+                    visible = true
+                }
                 CoffeeElement(
                     item.drawable,
                     item.coffeeText,
@@ -56,7 +86,10 @@ fun CoffeeGrid(
                     item.strengthText,
                     likedCoffees.contains(item.id),  // id pass
                     { onFavouriteToggle(item.id) },  // id pass for favouritng
-                    modifier = Modifier.clickable { onItemClick(item.id) }  // passing in the ids to be matched
+                    modifier = Modifier
+                        .alpha(alpha)
+                        .offset { IntOffset(0, offsetY) }
+                        .clickable { onItemClick(item.id) }  // passing in the ids to be matched
                 )
             }
         }
