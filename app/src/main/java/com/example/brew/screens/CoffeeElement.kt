@@ -75,6 +75,7 @@ fun CoffeeElement(
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface,
+        shadowElevation = 8.dp,
         modifier = modifier
             .fillMaxWidth()
             .height(145.dp)) {

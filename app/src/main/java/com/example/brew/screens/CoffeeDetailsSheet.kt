@@ -31,7 +31,6 @@ fun CoffeeDetailsSheet(
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true  // forces full expand
     )
-    val scope = rememberCoroutineScope()
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
