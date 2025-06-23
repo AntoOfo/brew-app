@@ -24,7 +24,7 @@ fun SearchBar(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier) {
     Surface(
-        shadowElevation = 4.dp, // or 8.dp for more emphasis
+        shadowElevation = 6.dp, // or 8.dp for more emphasis, probs 12.dp later
         shape = MaterialTheme.shapes.extraLarge,
         modifier = modifier.fillMaxWidth()
     ) {
