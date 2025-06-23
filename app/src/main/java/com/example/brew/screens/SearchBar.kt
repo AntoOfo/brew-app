@@ -8,6 +8,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,6 +23,11 @@ fun SearchBar(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier) {
+    Surface(
+        shadowElevation = 4.dp, // or 8.dp for more emphasis
+        shape = MaterialTheme.shapes.extraLarge,
+        modifier = modifier.fillMaxWidth()
+    ) {
     TextField(
         value = value,
         onValueChange = onValueChange,
@@ -44,11 +50,12 @@ fun SearchBar(
                 color = Color.Gray)
         },
         shape = MaterialTheme.shapes.extraLarge,
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
     )
 }
+    }
 
 @Preview(showBackground = true, backgroundColor = 0xFF1E1E1E)
 @Composable
