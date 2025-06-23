@@ -35,6 +35,7 @@ fun CoffeeDetailsSheet(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
+        containerColor = MaterialTheme.colorScheme.background,
         modifier = Modifier.fillMaxSize()
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
