@@ -36,6 +36,11 @@ data class Properties(
     val name: String?  // just need name 4 now
 )
 
+// coords
+data class Geometry(
+    val type: String,
+    val coordinates: List<Double>
+)
 
 // list that holds the data for each coffee element
 val coffeeData = listOf(
