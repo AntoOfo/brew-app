@@ -21,7 +21,18 @@ public class PlacesController {
         @RequestParam double lon,   // long coords
         @RequestParam(defaultValue = "10") int limit) { // max places to return
 
+        // cirlce filter instead of rect
+        String url = String.format(
+                "https://api.geoapify.com/v2/places?categories=catering.cafe&filter=circle:%f,%f,3000&limit=%d&apiKey=%s",
+                lon, lat,limit, apiKey
+        );
+
+        return webClient
+                .get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(String.class);
 
         }
-    )
+    
 }
