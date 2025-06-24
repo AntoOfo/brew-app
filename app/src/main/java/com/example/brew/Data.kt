@@ -18,6 +18,25 @@ data class Cafe(
     val lon: Double
 )
 
+// first thing seen in json, whole json response
+data class FeatureCollection(
+    val type: String,
+    val features: List<Feature>  // cafe features list
+)
+
+// feature details (cafe with properties)
+data class Feature(
+    val type: String,
+    val properties: Properties, // cafe details
+    val geometry: Geometry  // coords
+)
+
+// cafe properties
+data class Properties(
+    val name: String?  // just need name 4 now
+)
+
+
 // list that holds the data for each coffee element
 val coffeeData = listOf(
     // espresso
