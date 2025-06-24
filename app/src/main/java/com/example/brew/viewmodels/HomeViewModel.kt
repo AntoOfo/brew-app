@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.brew.Cafe
 
 class HomeViewModel : ViewModel() {
 
@@ -37,4 +38,8 @@ class HomeViewModel : ViewModel() {
     fun toggleShowOnlyLiked() {
         showOnlyLiked = !showOnlyLiked
     }
+
+    // will hold list of cafes
+    var cafes by mutableStateOf<List<Cafe>>(emptyList())
+    private set
 }
