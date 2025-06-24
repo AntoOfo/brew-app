@@ -42,4 +42,5 @@ class HomeViewModel : ViewModel() {
     // will hold list of cafes
     var cafes by mutableStateOf<List<Cafe>>(emptyList())
     private set
+
 }
