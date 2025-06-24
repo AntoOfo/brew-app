@@ -12,6 +12,12 @@ data class DrawableStringsSetup(
     @StringRes val strengthText: Int
 )
 
+data class Cafe(
+    val name: String,
+    val lat: Double,
+    val lon: Double
+)
+
 // list that holds the data for each coffee element
 val coffeeData = listOf(
     // espresso
