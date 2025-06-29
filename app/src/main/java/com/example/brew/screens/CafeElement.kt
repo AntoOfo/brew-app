@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,7 +22,11 @@ import com.example.brew.ui.theme.BrewTheme
 fun CafeElement(
     name: String,
     street: String,
+    lat: Double,
+    lon: Double,
     modifier: Modifier = Modifier) {
+
+    val context = LocalContext.current
 
     // curved background for cafe element
     Surface(
@@ -60,7 +65,9 @@ fun CafeElementPreview() {
         CafeElement(
             name = TODO(),
             modifier = TODO(),
-            street = TODO()
+            street = TODO(),
+            lat = TODO(),
+            lon = TODO()
         )
     }
 }

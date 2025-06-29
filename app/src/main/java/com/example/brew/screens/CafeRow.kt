@@ -57,6 +57,8 @@ fun CafeElementRow(
                 CafeElement(
                     name = cafe.name,
                     street = cafe.street,
+                    lat = cafe.lat,
+                    lon = cafe.lon,
                     modifier = Modifier.alpha(alpha))
             }
         }
