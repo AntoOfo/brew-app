@@ -65,10 +65,12 @@ class HomeViewModel : ViewModel() {
                 // mapping json details
                 cafes = response.features.mapNotNull { feature ->
                     val name = feature.properties.name
+                    val street = feature.properties.street
                     val coords = feature.geometry.coordinates
                     if (name != null && coords.size >= 2) {
                         Cafe(
                             name = name,
+                            street = street,
                             lat = coords[1],   // order on api url
                             lon = coords[0]
                         )

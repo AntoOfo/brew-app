@@ -34,7 +34,8 @@ data class Feature(
 
 // cafe properties
 data class Properties(
-    val name: String?  // just need name 4 now
+    val name: String?,
+    val street: String?
 )
 
 // coords
