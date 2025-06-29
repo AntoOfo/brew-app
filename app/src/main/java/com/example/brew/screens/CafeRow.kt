@@ -21,11 +21,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.example.brew.Cafe
 import com.example.brew.ui.theme.BrewTheme
 
 // holds the lazyrow for the cafe elements
 @Composable
-fun CafeElementRow(modifier: Modifier = Modifier) {
+fun CafeElementRow(
+    cafes: List<Cafe>,
+    modifier: Modifier = Modifier) {
     // slightly curved background to avoid sharp edge
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -36,7 +39,9 @@ fun CafeElementRow(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = modifier
         ) {
-            items(8) { index ->      // dummy size for now
+            items(cafes.size) { index ->
+                val cafe = cafes[index]
+
                 var visible by remember { mutableStateOf(false)}
 
                 val alpha by animateFloatAsState(
@@ -49,8 +54,9 @@ fun CafeElementRow(modifier: Modifier = Modifier) {
                     visible = true
                 }
 
-                CafeElement(modifier = Modifier
-                    .alpha(alpha))
+                CafeElement(
+                    name = cafe.name,
+                    modifier = Modifier.alpha(alpha))
             }
         }
     }
@@ -60,6 +66,9 @@ fun CafeElementRow(modifier: Modifier = Modifier) {
 @Composable
 fun CafeRowPreview() {
     BrewTheme {
-        CafeElementRow()
+        CafeElementRow(
+            cafes = TODO(),
+            modifier = TODO()
+        )
     }
 }

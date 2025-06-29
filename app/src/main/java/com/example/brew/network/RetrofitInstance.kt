@@ -9,4 +9,6 @@ object RetrofitInstance {
         .baseUrl("http://10.0.2.2:8080/")  // 10.0.2.2 is emulators ip
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    val cafeService: CafeService = retrofit.create(CafeService::class.java)
 }

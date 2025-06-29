@@ -18,7 +18,9 @@ import androidx.compose.ui.unit.dp
 import com.example.brew.ui.theme.BrewTheme
 
 @Composable
-fun CafeElement(modifier: Modifier = Modifier) {
+fun CafeElement(
+    name: String,
+    modifier: Modifier = Modifier) {
 
     // curved background for cafe element
     Surface(
@@ -37,7 +39,7 @@ fun CafeElement(modifier: Modifier = Modifier) {
                 .padding(start = 8.dp, end = 8.dp, top = 8.dp)
         ) {
             Text(
-                text = "Ariosa Cafe",  // placeholder for now
+                text = name,
                 style = MaterialTheme.typography.bodyLarge,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
@@ -54,6 +56,9 @@ fun CafeElement(modifier: Modifier = Modifier) {
 @Composable
 fun CafeElementPreview() {
     BrewTheme {
-        CafeElement()
+        CafeElement(
+            name = TODO(),
+            modifier = TODO()
+        )
     }
 }

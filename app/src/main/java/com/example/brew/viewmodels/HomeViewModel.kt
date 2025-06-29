@@ -4,7 +4,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.brew.Cafe
+import com.example.brew.network.RetrofitInstance
+import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
@@ -43,4 +46,42 @@ class HomeViewModel : ViewModel() {
     var cafes by mutableStateOf<List<Cafe>>(emptyList())
     private set
 
+    var isLoadingCafes by mutableStateOf(false)
+    private set
+
+    // error msg
+    var cafesErrorMsg by mutableStateOf<String?>(null)
+    private set
+
+    fun loadNearbyCafes(lat: Double, lon: Double) {
+        viewModelScope.launch {
+            try {
+                isLoadingCafes = true
+                cafesErrorMsg = null
+
+                // calls retro to get json
+                val response = RetrofitInstance.cafeService.getNearbyCafes(lat, lon)
+
+                // mapping json details
+                cafes = response.features.mapNotNull { feature ->
+                    val name = feature.properties.name
+                    val coords = feature.geometry.coordinates
+                    if (name != null && coords.size >= 2) {
+                        Cafe(
+                            name = name,
+                            lat = coords[1],   // order on api url
+                            lon = coords[0]
+                        )
+                } else {
+                    null
+                }
+            }
+
+                isLoadingCafes = false
+            } catch (e: Exception) {
+                isLoadingCafes = false
+                cafesErrorMsg = e.message ?: "Error loading cafés"
+            }
+        }
+    }
 }

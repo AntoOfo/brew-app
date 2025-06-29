@@ -20,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -87,6 +88,17 @@ fun HomeScreen(
         filteredCoffeeList
     }
 
+    val cafes = viewModel.cafes
+    val isLoadingCafes = viewModel.isLoadingCafes
+    val cafesErrorMsg = viewModel.cafesErrorMsg
+
+    LaunchedEffect(Unit) {
+        // dummy coords for now
+        val testLat = 53.7179
+        val testLon = -6.3561
+        viewModel.loadNearbyCafes(testLat, testLon)
+    }
+
     var selectedCoffee by remember { mutableStateOf<CoffeeDetails?>(null) }
     val sheetVisible = selectedCoffee != null
 
@@ -139,7 +151,30 @@ fun HomeScreen(
         }
 
         HomeSection(title = R.string.cafe_title) {
-            CafeElementRow()
+            when {
+                isLoadingCafes -> {
+                    Text(
+                        text = "Loading cafés...",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+
+                cafesErrorMsg != null -> {
+                    Text(
+                        text = "Error: $cafesErrorMsg",
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+                else -> {
+                    CafeElementRow(
+                        cafes = cafes,
+                        modifier = Modifier
+                    )
+                }
+            }
         }
 
     }
