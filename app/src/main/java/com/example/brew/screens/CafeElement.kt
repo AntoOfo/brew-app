@@ -20,6 +20,7 @@ import com.example.brew.ui.theme.BrewTheme
 @Composable
 fun CafeElement(
     name: String,
+    street: String,
     modifier: Modifier = Modifier) {
 
     // curved background for cafe element
@@ -45,7 +46,7 @@ fun CafeElement(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "5km away",   // placeholder
+                text = street,   // placeholder
                 style = MaterialTheme.typography.bodySmall
             )
         }
@@ -58,7 +59,8 @@ fun CafeElementPreview() {
     BrewTheme {
         CafeElement(
             name = TODO(),
-            modifier = TODO()
+            modifier = TODO(),
+            street = TODO()
         )
     }
 }

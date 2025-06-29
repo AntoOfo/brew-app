@@ -65,7 +65,7 @@ class HomeViewModel : ViewModel() {
                 // mapping json details
                 cafes = response.features.mapNotNull { feature ->
                     val name = feature.properties.name
-                    val street = feature.properties.street
+                    val street = feature.properties.street ?: ""
                     val coords = feature.geometry.coordinates
                     if (name != null && coords.size >= 2) {
                         Cafe(
