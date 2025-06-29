@@ -1,5 +1,8 @@
 package com.example.brew.screens
 
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,6 +38,13 @@ fun CafeElement(
         modifier = modifier
             .width(170.dp)
             .height(48.dp)
+            .clickable {
+
+                // opens maps app with marker for cafe based on lat/lon
+                val uri = Uri.parse("geo:$lat,$lon?q=$lat,$lon($name)")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                context.startActivity(intent)
+            }
     ) {
         // attributes for the element
         Column(
