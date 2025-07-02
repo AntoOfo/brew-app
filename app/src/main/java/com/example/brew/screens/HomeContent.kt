@@ -168,20 +168,19 @@ fun HomeScreen(
                 }
 
                 cafesErrorMsg != null -> {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp),
+                    Box(modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(
-                            text = "No cafés available",
-                            color = MaterialTheme.colorScheme.error,
-                            style = MaterialTheme.typography.bodyMedium,
-                            modifier = Modifier.padding(16.dp)
-                        )
-                    }
+                    Text(
+                        text = "No cafés available",
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(16.dp)
+                    )
                 }
+                    }
                 else -> {
                     CafeElementRow(
                         cafes = cafes,
