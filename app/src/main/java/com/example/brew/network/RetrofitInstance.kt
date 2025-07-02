@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitInstance {
 
     val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:8080/")  // 10.0.2.2 is emulators ip
+        .baseUrl("https://brew-app-wzfl.onrender.com/")  // 10.0.2.2 is emulators ip
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
