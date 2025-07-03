@@ -110,8 +110,7 @@ fun HomeScreen(
     var selectedCoffee by remember { mutableStateOf<CoffeeDetails?>(null) }
     val sheetVisible = selectedCoffee != null
 
-    Column(modifier = modifier
-        .verticalScroll(rememberScrollState())) {
+    Column(modifier = modifier) {
         Spacer(Modifier.height(16.dp))
 
         SearchBar(
@@ -121,31 +120,38 @@ fun HomeScreen(
             Modifier.padding(horizontal = 16.dp))
 
         HomeSection(title = R.string.coffee_title) {
-            // when theres no liked elements but btn is clicked
-            if (displayCoffeeList.isEmpty() && showOnlyLiked) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(gridHeight),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "No liked coffees yet!",
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(24.dp)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(gridHeight)
+            ) {
+                // when theres no liked elements but btn is clicked
+                if (displayCoffeeList.isEmpty() && showOnlyLiked) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "No liked coffees yet!",
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(24.dp)
+                        )
+                    }
+                } else {
+                    // list of elements shown will be whats searched
+                    CoffeeGrid(
+                        coffeeList = displayCoffeeList,
+                        likedCoffees = likedCoffeesList,
+                        onFavouriteToggle = { coffeeId -> viewModel.toggleFavourite(coffeeId) },
+                        onItemClick = { clickedId ->
+                            val match = coffeeDetails.find { it.id == clickedId }
+                            if (match != null) selectedCoffee = match
+                        },
+                        modifier = Modifier
+                            .fillMaxSize()
                     )
                 }
-            } else {
-                // list of elements shown will be whats searched
-                CoffeeGrid(
-                    coffeeList = displayCoffeeList,
-                    likedCoffees = likedCoffeesList,
-                    onFavouriteToggle = { coffeeId -> viewModel.toggleFavourite(coffeeId) },
-                    onItemClick = { clickedId ->
-                        val match = coffeeDetails.find { it.id == clickedId }
-                        if (match != null) selectedCoffee = match
-                    }
-                )
             }
         }
 
