@@ -75,6 +75,8 @@ fun HomeScreen(
 ) {
 
     val configuration = LocalConfiguration.current  // allows app to see used device specs
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
     val screenHeightDp = configuration.screenHeightDp.dp
     val gridHeight = (screenHeightDp * 0.55f).coerceIn(300.dp, 490.dp)
 
@@ -110,7 +112,13 @@ fun HomeScreen(
     var selectedCoffee by remember { mutableStateOf<CoffeeDetails?>(null) }
     val sheetVisible = selectedCoffee != null
 
-    Column(modifier = modifier) {
+    val scrollState = rememberScrollState()
+
+    Column(
+        modifier = modifier
+            .then(  // if landscape, be scrollable
+                if (isLandscape) Modifier.verticalScroll(scrollState) else Modifier
+            )) {
         Spacer(Modifier.height(16.dp))
 
         SearchBar(
