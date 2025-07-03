@@ -13,7 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -175,12 +180,23 @@ fun HomeScreen(
                         .padding(16.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                    Text(
-                        text = "No cafés available",
-                        color = MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(16.dp)
-                    )
+                        Button(
+                            onClick = {
+                            val testLat = 53.7179
+                            val testLon = -6.3561
+                            viewModel.loadNearbyCafes(testLat, testLon)
+                        },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.surface,
+                                contentColor = MaterialTheme.colorScheme.secondary
+                            )) {
+                            Icon(
+                                Icons.Filled.Refresh,
+                                contentDescription = "Refresh button",
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                            Text("Try again?")
+                        }
                 }
                     }
                 else -> {
