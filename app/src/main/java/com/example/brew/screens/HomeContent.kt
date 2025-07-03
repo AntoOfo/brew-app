@@ -177,7 +177,8 @@ fun HomeScreen(
                 cafesErrorMsg != null -> {
                     Box(modifier = Modifier
                         .fillMaxSize()
-                        .padding(16.dp),
+                        .padding(16.dp)
+                        .height(70.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Button(
@@ -200,10 +201,16 @@ fun HomeScreen(
                 }
                     }
                 else -> {
-                    CafeElementRow(
-                        cafes = cafes,
+                    Box(
                         modifier = Modifier
-                    )
+                            .fillMaxWidth()
+                            .height(70.dp)
+                    ) {
+                        CafeElementRow(
+                            cafes = cafes,
+                            modifier = Modifier
+                        )
+                    }
                 }
             }
         }
