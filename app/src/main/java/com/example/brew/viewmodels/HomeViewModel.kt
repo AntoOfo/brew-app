@@ -9,9 +9,12 @@ import com.example.brew.Cafe
 import com.example.brew.network.RetrofitInstance
 import com.example.brew.room.LikedCoffee
 import com.example.brew.room.LikedCoffeeDao
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(
+@HiltViewModel
+class HomeViewModel @Inject constructor (
     private val likedCoffeeDao: LikedCoffeeDao // lets viewmodel accept dao
 ) : ViewModel() {
 
