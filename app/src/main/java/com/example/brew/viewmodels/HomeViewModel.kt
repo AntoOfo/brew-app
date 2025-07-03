@@ -7,9 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.brew.Cafe
 import com.example.brew.network.RetrofitInstance
+import com.example.brew.room.LikedCoffeeDao
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val likedCoffeeDao: LikedCoffeeDao // lets viewmodel accept dao
+) : ViewModel() {
 
     // current value of the search query
     var searchQuery by mutableStateOf("")
@@ -23,6 +26,14 @@ class HomeViewModel : ViewModel() {
     // empty liked set of coffee ids
     var likedCoffee by mutableStateOf(setOf<Int>())
         private set
+
+    init {
+        // loads database on launch
+        viewModelScope.launch {
+            val likedFromDb = likedCoffeeDao.getAllLiked()
+            likedCoffee = likedFromDb.map { it.coffeeId }.toSet()
+        }
+    }
 
     // handles if a coffee is liked
     fun toggleFavourite(coffeeId: Int){
