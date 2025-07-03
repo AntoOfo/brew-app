@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -62,7 +63,7 @@ fun HomeSection(
 // for search bar and both home sections
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = viewModel(),
+    viewModel: HomeViewModel = hiltViewModel(),
     modifier: Modifier = Modifier
 ) {
 
@@ -196,7 +197,7 @@ fun HomeScreen(
 // apps portrait layout
 @Composable
 fun MyAppPortrait() {
-    val viewModel: HomeViewModel = viewModel()
+    val viewModel: HomeViewModel = hiltViewModel()
     BrewTheme {
         Scaffold(bottomBar = { BottomNavigation(viewModel = viewModel) })
         { paddingValues ->
@@ -210,7 +211,7 @@ fun MyAppPortrait() {
 // apps landscape layout
 @Composable
 fun MyAppLandscape() {
-    val viewModel: HomeViewModel = viewModel()
+    val viewModel: HomeViewModel = hiltViewModel()
     BrewTheme {
         Surface(        // manually set the background because the color disappears for some reason
             modifier = Modifier.fillMaxSize(),
