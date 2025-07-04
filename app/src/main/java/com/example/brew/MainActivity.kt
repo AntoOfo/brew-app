@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
     private fun getLastLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
-                // gonna put coords in viewmodel
+                viewModel.loadNearbyCafes(location.latitude, location.longitude)
             } else {
                 // idk how ur location could be null lol
                 // probs have a toast
