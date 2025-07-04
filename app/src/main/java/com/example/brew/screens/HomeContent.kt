@@ -71,7 +71,8 @@ fun HomeSection(
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    refreshLocation: (() -> Unit)? = null
 ) {
 
     val configuration = LocalConfiguration.current  // allows app to see used device specs
@@ -101,13 +102,6 @@ fun HomeScreen(
     val cafes = viewModel.cafes
     val isLoadingCafes = viewModel.isLoadingCafes
     val cafesErrorMsg = viewModel.cafesErrorMsg
-
-    LaunchedEffect(Unit) {
-        // dummy coords for now
-        val testLat = 53.7179
-        val testLon = -6.3561
-        viewModel.loadNearbyCafes(testLat, testLon)
-    }
 
     var selectedCoffee by remember { mutableStateOf<CoffeeDetails?>(null) }
     val sheetVisible = selectedCoffee != null
@@ -197,9 +191,7 @@ fun HomeScreen(
                     ) {
                         Button(
                             onClick = {
-                            val testLat = 53.7179
-                            val testLon = -6.3561
-                            viewModel.loadNearbyCafes(testLat, testLon)
+                            refreshLocation?.invoke()
                         },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = MaterialTheme.colorScheme.surface,
@@ -234,21 +226,22 @@ fun HomeScreen(
 
 // apps portrait layout
 @Composable
-fun MyAppPortrait() {
+fun MyAppPortrait(refreshLocation: (() -> Unit)? = null) {
     val viewModel: HomeViewModel = hiltViewModel()
     BrewTheme {
         Scaffold(bottomBar = { BottomNavigation(viewModel = viewModel) })
         { paddingValues ->
             HomeScreen(
                 viewModel = viewModel,
-                modifier =Modifier.padding(paddingValues))
+                modifier =Modifier.padding(paddingValues),
+                refreshLocation = refreshLocation)
         }
     }
 }
 
 // apps landscape layout
 @Composable
-fun MyAppLandscape() {
+fun MyAppLandscape(refreshLocation: (() -> Unit)? = null) {
     val viewModel: HomeViewModel = hiltViewModel()
     BrewTheme {
         Surface(        // manually set the background because the color disappears for some reason
@@ -257,7 +250,9 @@ fun MyAppLandscape() {
         ) {
             Row {
                 NavigationRail(viewModel = viewModel)
-                HomeScreen(viewModel = viewModel)
+                HomeScreen(
+                    viewModel = viewModel,
+                    refreshLocation = refreshLocation)
             }
         }
     }
@@ -265,15 +260,15 @@ fun MyAppLandscape() {
 
 // finalised app layout portrait/landscape to be called
 @Composable
-fun MyApp() {
+fun MyApp(refreshLocation: (() -> Unit)? = null) {
 
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     if (isLandscape) {
-        MyAppLandscape()
+        MyAppLandscape(refreshLocation = refreshLocation)
     } else {
-        MyAppPortrait()
+        MyAppPortrait(refreshLocation = refreshLocation)
     }
 }
 

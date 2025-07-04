@@ -26,17 +26,34 @@ class MainActivity : ComponentActivity() {
     // bringing in the viewmodel
     private val viewModel: HomeViewModel by viewModels()
 
+    // used in homescreen
+    var refreshLocation: (() -> Unit)? = null
+
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        // gotta redo perms check..
+        refreshLocation = {
+            if (
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            ) {
+                getLastLocation()
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 10
+                )
+            }
+        }
         checkLocationPerms()
 
         enableEdgeToEdge()
         setContent {
             BrewTheme {
-                MyApp()  // called myapp with observed rotated state to allow either landscape/portrait
+                MyApp(refreshLocation = refreshLocation)  // called myapp with observed rotated state to allow either landscape/portrait
             }
         }
     }
