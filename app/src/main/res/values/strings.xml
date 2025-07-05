@@ -36,6 +36,37 @@
     <string name="turkish_coffee">Turkish Coffee</string>
     <string name="turkish_bio">Finely ground coffee simmered to create a strong brew.</string>
 
+    <string name="ristretto">Ristretto</string>
+    <string name="ristretto_bio">A shorter, more concentrated espresso with a powerful, rich taste.</string>
+
+    <string name="affogato">Affogato</string>
+    <string name="affogato_bio">Espresso poured over vanilla ice cream for a hot-cold delight.</string>
+
+    <string name="cortado">Cortado</string>
+    <string name="cortado_bio">Equal parts espresso and warm milk for a smooth, balanced flavour.</string>
+
+    <string name="red_eye">Red Eye</string>
+    <string name="redeye_bio">Brewed coffee boosted with a shot of espresso for an intense kick.</string>
+
+    <string name="doppio">Doppio</string>
+    <string name="doppio_bio">Double shot of espresso for a deep, bold experience.</string>
+
+    <string name="irish_coffee">Irish Coffee</string>
+    <string name="irish_bio">Hot coffee blended with whiskey and cream for a warming treat.</string>
+
+    <string name="vienna">Vienna</string>
+    <string name="vienna_bio">Two espresso shots topped with whipped cream instead of milk.</string>
+
+    <string name="breve">Breve</string>
+    <string name="breve_bio">Espresso mixed with steamed half-and-half for a rich, creamy drink.</string>
+
+    <string name="nitro_cold_brew">Nitro Cold Brew</string>
+    <string name="nitro_bio">Cold brew infused with nitrogen for a frothy texture.</string>
+
+    <string name="cafe_lait">Café au Lait</string>
+    <string name="cafelait_bio">Brewed coffee with steamed milk to create a mellow cup.</string>
+
     <string name="coffee_title">Coffee Picks</string>
     <string name="cafe_title">Nearby Cafes</string>
+
 </resources>
