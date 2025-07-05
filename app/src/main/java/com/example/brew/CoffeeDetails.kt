@@ -210,5 +210,85 @@ val coffeeDetails = listOf(
             R.drawable.turk_4,
             R.drawable.turk_5
         )
+    ),
+    // ristretto
+    CoffeeDetails(
+        id = 11,
+        origin = "Italy",
+        type = "Ristretto",
+        instructions = listOf(
+            "1. Use a fine grind of dark roasted coffee beans.",
+            "2. Tamp firmly into the portafilter.",
+            "3. Extract a short shot (15-20ml) of espresso.",
+            "4. Stop extraction early for concentrated flavour.",
+            "5. Serve in a demitasse cup immediately."
+        ),
+        imageCarousel = listOf(
+            R.drawable.ristretto_1,
+            R.drawable.ristretto_2,
+            R.drawable.ristretto_3,
+            R.drawable.ristretto_4,
+            R.drawable.ristretto_5
+        )
+    ),
+    // affogato
+    CoffeeDetails(
+        id = 12,
+        origin = "Italy",
+        type = "Affogato",
+        instructions = listOf(
+            "1. Scoop quality vanilla ice cream into a small bowl.",
+            "2. Brew a single shot of hot espresso.",
+            "3. Pour espresso directly over the ice cream.",
+            "4. Let it slightly melt for a cream contrast.",
+            "5. Enjoy quickly before it fully melts."
+        ),
+        imageCarousel = listOf(
+            R.drawable.affogato_1,
+            R.drawable.affogato_2,
+            R.drawable.affogato_3,
+            R.drawable.affogato_4,
+            R.drawable.affogato_5
+        )
+    ),
+    // cortado
+    CoffeeDetails(
+        id = 13,
+        origin = "Spain",
+        type = "Cortado",
+        instructions = listOf(
+            "1. Brew a shot of espresso.",
+            "2. Steam milk to around 60°C (140°F), without frothing.",
+            "3. Pour equal parts steamed milk into the espresso.",
+            "4. Gently mix for a smooth, balanced taste.",
+            "5. Serve in a small glass."
+        ),
+        imageCarousel = listOf(
+            R.drawable.cortado_1,
+            R.drawable.cortado_2,
+            R.drawable.cortado_3,
+            R.drawable.cortado_4,
+            R.drawable.cordato_5
+        )
+    ),
+    // red eye
+    CoffeeDetails(
+        id = 14,
+        origin = "United States",
+        type = "Red Eye",
+        instructions = listOf(
+            "1. Brew a fresh cup of drip coffee.",
+            "2. Prepare a single shot of espresso.",
+            "3. Pour the espresso into the drip coffee.",
+            "4. Stir gently for an even blend.",
+            "5. Serve hot and strong."
+        ),
+        imageCarousel = listOf(
+            R.drawable.redeye_1,
+            R.drawable.redeye_2,
+            R.drawable.redeye_3,
+            R.drawable.redeye_4,
+            R.drawable.redeye_5
+        )
     )
 )
