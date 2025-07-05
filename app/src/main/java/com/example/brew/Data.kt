@@ -125,6 +125,86 @@ val coffeeData = listOf(
         R.string.turkish_coffee,
         R.string.turkish_bio,
         R.string.strong
+    ),
+    // ristretto
+    DrawableStringsSetup(
+        id = 11,
+        R.drawable.ristretto,
+        R.string.ristretto,
+        R.string.ristretto_bio,
+        R.string.strong
+    ),
+    //affogato
+    DrawableStringsSetup(
+        id = 12,
+        R.drawable.affogato,
+        R.string.affogato,
+        R.string.affogato_bio,
+        R.string.balanced
+    ),
+    // cortado
+    DrawableStringsSetup(
+        id = 13,
+        R.drawable.cortado,
+        R.string.cortado,
+        R.string.cortado_bio,
+        R.string.balanced
+    ),
+    // red eye
+    DrawableStringsSetup(
+        id = 14,
+        R.drawable.redeye,
+        R.string.red_eye,
+        R.string.redeye_bio,
+        R.string.strong
+    ),
+    // doppio
+    DrawableStringsSetup(
+        id = 15,
+        R.drawable.doppio,
+        R.string.doppio,
+        R.string.doppio_bio,
+        R.string.bold
+    ),
+    // irish coffee
+    DrawableStringsSetup(
+        id = 16,
+        R.drawable.irishcoffee,
+        R.string.irish_coffee,
+        R.string.irish_bio,
+        R.string.bold
+    ),
+    // vienna
+    DrawableStringsSetup(
+        id = 17,
+        R.drawable.vienna,
+        R.string.vienna,
+        R.string.vienna_bio,
+        R.string.balanced
+    ),
+    // breve
+    DrawableStringsSetup(
+        id = 18,
+        R.drawable.breve,
+        R.string.breve,
+        R.string.breve_bio,
+        R.string.mild
+    ),
+    // nitro
+    DrawableStringsSetup(
+        id = 19,
+        R.drawable.nitro,
+        R.string.nitro_cold_brew,
+        R.string.nitro_bio,
+        R.string.bold
+    ),
+    // cafe lait
+    DrawableStringsSetup(
+        id = 20,
+        R.drawable.cafelait,
+        R.string.cafe_lait,
+        R.string.cafelait_bio,
+        R.string.mild
     )
 
 )
