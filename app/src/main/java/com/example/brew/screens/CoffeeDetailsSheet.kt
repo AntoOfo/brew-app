@@ -1,6 +1,7 @@
 package com.example.brew.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +16,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -65,7 +67,18 @@ fun CoffeeDetailsSheet(
                 )
             )
 
-            Divider(modifier = Modifier.padding(vertical = 20.dp, horizontal = 16.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            ) {
+                Divider(modifier = Modifier.weight(1f))
+                Text(
+                    text = "Instructions",
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+                Divider(modifier = Modifier.weight(1f))
+            }
 
             Spacer(modifier = Modifier.height(12.dp))
 
