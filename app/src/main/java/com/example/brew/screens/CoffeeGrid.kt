@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
@@ -117,6 +118,7 @@ fun CoffeeGrid(
                         }
                         .alpha(alpha)
                         .offset { IntOffset(0, offsetY) }
+                        .clip(MaterialTheme.shapes.medium)
                         .clickable {
                             isClicked = true
                             onItemClick(item.id) }  // passing in the ids to be matched

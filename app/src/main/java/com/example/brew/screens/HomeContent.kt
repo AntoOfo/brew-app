@@ -2,6 +2,7 @@ package com.example.brew.screens
 
 import android.content.res.Configuration
 import androidx.annotation.StringRes
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -196,7 +197,9 @@ fun HomeScreen(
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = MaterialTheme.colorScheme.surface,
                                 contentColor = MaterialTheme.colorScheme.secondary
-                            )) {
+                            ),
+                            border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f))
+                        ) {
                             Icon(
                                 Icons.Filled.Refresh,
                                 contentDescription = "Refresh button",

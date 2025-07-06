@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextIndent
@@ -78,13 +79,21 @@ fun CoffeeDetailsSheet(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(horizontal = 16.dp)
             ) {
-                Divider(modifier = Modifier.weight(1f))
+                Divider(
+                    modifier = Modifier
+                        .weight(1f)
+                        .alpha(0.6f))
                 Text(
                     text = "Instructions",
                     style = MaterialTheme.typography.titleSmall,
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .alpha(0.6f)
                 )
-                Divider(modifier = Modifier.weight(1f))
+                Divider(
+                    modifier = Modifier
+                        .weight(1f)
+                        .alpha(0.6f))
             }
 
             Spacer(modifier = Modifier.height(16.dp))
