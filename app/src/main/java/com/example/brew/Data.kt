@@ -205,6 +205,14 @@ val coffeeData = listOf(
         R.string.cafe_lait,
         R.string.cafelait_bio,
         R.string.mild
-    )
+    ),
+    DrawableStringsSetup(
+        id = 21,
+        R.drawable.einspanner,
+        R.string.eins,
+        R.string.eins_bio,
+        R.string.bold
+    ),
+
 
 )

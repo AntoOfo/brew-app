@@ -65,6 +65,21 @@
 
     <string name="cafe_lait">Café au Lait</string>
     <string name="cafelait_bio">Brewed coffee with steamed milk to create a mellow cup.</string>
+    
+    <string name="eins">Einspänner</string>
+    <string name="eins_bio">Double espresso topped with a layer of whipped cream.</string>
+
+    <string name="cafe_bombon">Café Bombón</string>
+    <string name="bombon_bio">Sweet espresso layered with condensed milk.</string>
+    
+    <string name="cafe_cubano">Café Cubano</string>
+    <string name="cubano_bio">Strong, sweet espresso whipped with sugar.</string>
+    
+    <string name="mazagran">Mazagran</string>
+    <string name="maza_bio">Cold coffee drink with lemon and sugar.</string>
+    
+    <string name="bicerin">Bicerin</string>
+    <string name="Layered drink of espresso, chocolate, and milk."
 
     <string name="coffee_title">Coffee Picks</string>
     <string name="cafe_title">Nearby Cafes</string>
