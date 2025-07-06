@@ -32,6 +32,12 @@ fun CafeElement(
 
     val context = LocalContext.current
 
+    val formattedDistance = if (distance >= 1000) {
+        String.format("%.1f km", distance / 1000)
+    } else {
+        String.format("%.0f m", distance)
+    }
+
     // curved background for cafe element
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
@@ -62,7 +68,7 @@ fun CafeElement(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "$street • $distance",   // placeholder
+                text = "$street • $formattedDistance",   // placeholder
                 style = MaterialTheme.typography.bodySmall
             )
         }
