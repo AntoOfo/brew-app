@@ -39,10 +39,11 @@ fun CoffeeDetailsSheet(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
+            Spacer(modifier = Modifier.height(16.dp))
             // carousel
             HorizontalCarousel(coffeeDetails = coffee)
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             // coffee name
             Text(
