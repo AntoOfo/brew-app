@@ -213,6 +213,34 @@ val coffeeData = listOf(
         R.string.eins_bio,
         R.string.bold
     ),
+    DrawableStringsSetup(
+        id = 22,
+        R.drawable.bombon,
+        R.string.cafe_bombon,
+        R.string.bombon_bio,
+        R.string.mild
+    ),
+    DrawableStringsSetup(
+        id = 23,
+        R.drawable.cubano,
+        R.string.cafe_cubano,
+        R.string.cubano_bio,
+        R.string.strong
+    ),
+    DrawableStringsSetup(
+        id = 24,
+        R.drawable.mazagran,
+        R.string.mazagran,
+        R.string.maza_bio,
+        R.string.balanced
+    ),
+    DrawableStringsSetup(
+        id = 25,
+        R.drawable.bicerin,
+        R.string.bicerin,
+        R.string.bicerin_bio,
+        R.string.bold
+    )
 
 
 )
