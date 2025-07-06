@@ -59,6 +59,7 @@ fun CafeElementRow(
                     street = cafe.street,
                     lat = cafe.lat,
                     lon = cafe.lon,
+                    distance = cafe.distance ?: 0f,  // fallback to 0 if null
                     modifier = Modifier.alpha(alpha))
             }
         }
