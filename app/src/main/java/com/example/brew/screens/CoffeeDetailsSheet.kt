@@ -67,6 +67,7 @@ fun CoffeeDetailsSheet(
                 )
             )
 
+            Spacer(modifier = Modifier.height(16.dp))
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -80,17 +81,7 @@ fun CoffeeDetailsSheet(
                 Divider(modifier = Modifier.weight(1f))
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Text(
-                text = "How to Make:",
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier
-                    .padding(horizontal = 21.dp)
-                    .paddingFromBaseline(bottom = 14.dp)
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             // instructions
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
