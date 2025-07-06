@@ -19,7 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,6 +44,7 @@ fun CafeElement(
         String.format("%.0f m", distance)
     }
 
+    val haptic = LocalHapticFeedback.current
     // curved background for cafe element
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
@@ -56,6 +59,8 @@ fun CafeElement(
                 // opens maps app with marker for cafe based on lat/lon
                 val uri = Uri.parse("geo:$lat,$lon?q=$lat,$lon($name)")
                 val intent = Intent(Intent.ACTION_VIEW, uri)
+
+                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 context.startActivity(intent)
             }
     ) {

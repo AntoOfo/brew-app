@@ -26,7 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -44,6 +46,8 @@ fun CoffeeGrid(
     onFavouriteToggle: (Int) -> Unit,
     onItemClick: (Int) -> Unit,    // clickable item param
     modifier: Modifier = Modifier) {
+
+    val haptic = LocalHapticFeedback.current
 
     val configuration = LocalConfiguration.current  // allows app to see used device specs
     val screenHeightDp = configuration.screenHeightDp.dp
@@ -121,7 +125,8 @@ fun CoffeeGrid(
                         .clip(MaterialTheme.shapes.medium)
                         .clickable {
                             isClicked = true
-                            onItemClick(item.id) }  // passing in the ids to be matched
+                            onItemClick(item.id)
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)}  // passing in the ids to be matched
                 )
             }
         }

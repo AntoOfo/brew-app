@@ -38,6 +38,8 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -57,6 +59,8 @@ fun CoffeeElement(
     modifier: Modifier = Modifier) {
 
     var trackAnim by remember { mutableStateOf(false)}
+
+    val haptic = LocalHapticFeedback.current
 
     // scale animation for heart
     val scale by animateFloatAsState(
@@ -124,7 +128,9 @@ fun CoffeeElement(
                 )
 
                 IconButton(
-                    onClick = onFavouriteToggle,  // toggles onFavourite
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onFavouriteToggle() },  // toggles onFavourite
                     modifier = Modifier
                         .size(24.dp)
                         .graphicsLayer(scaleX = scale, scaleY = scale)
