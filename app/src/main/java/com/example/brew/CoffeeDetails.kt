@@ -290,5 +290,125 @@ val coffeeDetails = listOf(
             R.drawable.redeye_4,
             R.drawable.redeye_5
         )
+    ),
+    // doppio
+    CoffeeDetails(
+        id = 15,
+        origin = "Italy",
+        type = "Doppio",
+        instructions = listOf(
+            "1. Use a double shot basket in your portafilter.",
+            "2. Fill with finely ground coffee and tamp evenly.",
+            "3. Extract about 60ml of espresso.",
+            "4. Ensure it flows smoothly in 25-30 seconds.",
+            "5. Serve immediately for a bold coffee hit."
+        ),
+        imageCarousel = listOf(
+            R.drawable.doppio_1,
+            R.drawable.doppio_2,
+            R.drawable.doppio_3,
+            R.drawable.doppio_4,
+            R.drawable.doppio_5
+        )
+    ),
+    // irish coffee
+    CoffeeDetails(
+        id = 16,
+        origin = "Ireland",
+        type = "Irish Coffee",
+        instructions = listOf(
+            "1. Brew a strong hot coffee.",
+            "2. Add 1 tsp brown sugar and stir to dissolve.",
+            "3. Pour in 1 shot of Irish whiskey.",
+            "4. Lightly whip cream until thick but pourable.",
+            "5. Float cream on top by pouring over a spoon."
+        ),
+        imageCarousel = listOf(
+            R.drawable.irish_1,
+            R.drawable.irish_2,
+            R.drawable.irish_3,
+            R.drawable.irish_4,
+            R.drawable.irish_5
+        )
+    ),
+    // vienna
+    CoffeeDetails(
+        id = 17,
+        origin = "Austria",
+        type = "Vienna",
+        instructions = listOf(
+            "1. Brew two shots of strong espresso.",
+            "2. Add sugar to taste (optional).",
+            "3. Pour espresso into a tall glass.",
+            "4. Top with whipped cream.",
+            "5. Sprinkle chocolate or cinnamon on top."
+        ),
+        imageCarousel = listOf(
+            R.drawable.vienna_1,
+            R.drawable.vienna_2,
+            R.drawable.vienna_3,
+            R.drawable.vienna_4,
+            R.drawable.vienna_5
+        )
+    ),
+    // breve
+    CoffeeDetails(
+        id = 18,
+        origin = "United States",
+        type = "Breve",
+        instructions = listOf(
+            "1. Brew a shot of espresso.",
+            "2. Steam half-and-half of milk and cream.",
+            "3. Froth it lightly to a creamy texture.",
+            "4. Pour the steamed half-and-half over the espresso.",
+            "5. Serve hot and enjoy its rich texture."
+        ),
+        imageCarousel = listOf(
+            R.drawable.breve_1,
+            R.drawable.breve_2,
+            R.drawable.breve_3,
+            R.drawable.breve_4,
+            R.drawable.breve_5
+        )
+    ),
+    // nitro
+    CoffeeDetails(
+        id = 19,
+        origin = "United States",
+        type = "Nitro Cold Brew",
+        instructions = listOf(
+            "1. Coarsely grind coffee beans.",
+            "2. Steep in cold water for 12-24 hours.",
+            "3. Strain the coffee to remove grounds.",
+            "4. Infuse with nitrogen.",
+            "5. Serve cold with a creamy head."
+        ),
+        imageCarousel = listOf(
+            R.drawable.nitro_1,
+            R.drawable.nitro_2,
+            R.drawable.nitro_3,
+            R.drawable.nitro_4,
+            R.drawable.nitro_5
+        )
+    ),
+    // cafe lait
+    CoffeeDetails(
+        id = 20,
+        origin = "France",
+        type = "Café au Lait",
+        instructions = listOf(
+            "1. Brew a strong drip or French press coffee.",
+            "2. Heat milk without frothing.",
+            "3. Pour equal parts of coffee and hot milk.",
+            "4. Stir gently to combine.",
+            "5. Serve in a wide mug."
+        ),
+        imageCarousel = listOf(
+            R.drawable.cafe_1,
+            R.drawable.cafe_2,
+            R.drawable.cafe_3,
+            R.drawable.cafe_4,
+            R.drawable.cafe_5
+        )
     )
 )
