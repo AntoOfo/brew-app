@@ -16,8 +16,13 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.TextIndent
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.brew.CoffeeDetails
 import com.example.brew.coffeeDetails
 import com.example.brew.ui.theme.BrewTheme
@@ -62,6 +67,8 @@ fun CoffeeDetailsSheet(
 
             Divider(modifier = Modifier.padding(vertical = 20.dp, horizontal = 16.dp))
 
+            Spacer(modifier = Modifier.height(12.dp))
+
             Text(
                 text = "How to Make:",
                 style = MaterialTheme.typography.titleMedium,
@@ -76,7 +83,16 @@ fun CoffeeDetailsSheet(
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                 coffee.instructions.forEach { step ->
                     Text(
-                        text = step,
+                        text = buildAnnotatedString {
+                            withStyle(
+                                style = ParagraphStyle(
+                                    textIndent = TextIndent(
+                                        firstLine = 0.sp, restLine = 16.sp)
+                                )
+                            ) {
+                                append(step)
+                            }
+                        },
                         style = MaterialTheme.typography.titleSmall,
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 14.dp)
                     )
