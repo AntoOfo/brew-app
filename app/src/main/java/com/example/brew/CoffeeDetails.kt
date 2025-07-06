@@ -410,5 +410,127 @@ val coffeeDetails = listOf(
             R.drawable.cafe_4,
             R.drawable.cafe_5
         )
+    ),
+    // einspanner
+    CoffeeDetails(
+        id = 21,
+        origin = "Austria",
+        type = "Einspänner",
+        instructions = listOf(
+            "1. Brew a double shot of espresso.",
+            "2. Pour into a tall glass or cup.",
+            "3. Whip heavy cream until soft peaks form.",
+            "4. Spoon cream gently over espresso.",
+            "5. Serve without stirring."
+        ),
+        imageCarousel = listOf(
+            R.drawable.eins_1,
+            R.drawable.eins_2,
+            R.drawable.eins_3,
+            R.drawable.eins_4,
+            R.drawable.eins_5
+        )
+    ),
+    // cafe bombon
+    CoffeeDetails(
+        id = 22,
+        origin = "Spain",
+        type = "Café Bombón",
+        instructions = listOf(
+            "1. Brew a shot of espresso.",
+            "2. Pour condensed milk into a glass.",
+            "3. Slowly pour espresso over milk.",
+            "4. Let layers settle visibly.",
+            "5. Stir before drinking, if preferred."
+        ),
+        imageCarousel = listOf(
+            R.drawable.bombon_1,
+            R.drawable.bombon_2,
+            R.drawable.bombon_3,
+            R.drawable.bombon_4,
+            R.drawable.bombon_5
+        )
+    ),
+    // cafe cubano
+    CoffeeDetails(
+        id = 23,
+        origin = "Cuba",
+        type = "Café Cubano",
+        instructions = listOf(
+            "1. Brew espresso using dark roast beans.",
+            "2. Add sugar to first drops of espresso.",
+            "3. Whip sugar and dropas into foam.",
+            "4. Pour in the rest of the espresso.",
+            "5. Mix well and serve small."
+        ),
+        imageCarousel = listOf(
+            R.drawable.cubano_1,
+            R.drawable.cubano_2,
+            R.drawable.cubano_3,
+            R.drawable.cubano_4,
+            R.drawable.cubano_5
+        )
+    ),
+    // mazagran
+    CoffeeDetails(
+        id = 24,
+        origin = "Algeria",
+        type = "Mazagran",
+        instructions = listOf(
+            "1. Brew strong black coffee.",
+            "2. Chill or pour over ice.",
+            "3. Add lemon juice or a lemon slice.",
+            "4. Sweeten with sugar or syrup.",
+            "5. Stir and serve cold."
+        ),
+        imageCarousel = listOf(
+            R.drawable.maza_1,
+            R.drawable.maza_2,
+            R.drawable.maza_3,
+            R.drawable.maza_4,
+            R.drawable.maza_5
+        )
+    ),
+    // bicerin
+    CoffeeDetails(
+        id = 25,
+        origin = "Italy",
+        type = "Bicerin",
+        instructions = listOf(
+            "1. Warm chocolate and pour into a glass.",
+            "2. Brew a shot of espresso.",
+            "3. Gently pour espresso over chocolate.",
+            "4. Steam milk and pour on top.",
+            "5. Don't stir, serve with layers visible."
+        ),
+        imageCarousel = listOf(
+            R.drawable.bicerin_1,
+            R.drawable.bicerin_2,
+            R.drawable.bicerin_3,
+            R.drawable.bicerin_4,
+            R.drawable.bicerin_5
+        )
+    ),
+    // kopi tubruk
+    CoffeeDetails(
+        id = 26,
+        origin = "Indonesia",
+        type = "Kopi Tubruk",
+        instructions = listOf(
+            "1. Add 1-2 tsp of coarse coffee to a glass.",
+            "2. Pour in hot boiling water.",
+            "3. Stir and let grounds sink.",
+            "4. Add sugar if desired.",
+            "5. Sip slowly, grounds stay at the bottom."
+        ),
+        imageCarousel = listOf(
+            R.drawable.kopi_1,
+            R.drawable.kopi_2,
+            R.drawable.kopi_3,
+            R.drawable.kopi_4,
+            R.drawable.kopi_5
+        )
     )
+
+
 )
