@@ -206,6 +206,7 @@ val coffeeData = listOf(
         R.string.cafelait_bio,
         R.string.mild
     ),
+    // einspanner
     DrawableStringsSetup(
         id = 21,
         R.drawable.einspanner,
@@ -213,6 +214,7 @@ val coffeeData = listOf(
         R.string.eins_bio,
         R.string.bold
     ),
+    // cafe bombon
     DrawableStringsSetup(
         id = 22,
         R.drawable.bombon,
@@ -220,6 +222,7 @@ val coffeeData = listOf(
         R.string.bombon_bio,
         R.string.mild
     ),
+    // cafe cubano
     DrawableStringsSetup(
         id = 23,
         R.drawable.cubano,
@@ -227,6 +230,7 @@ val coffeeData = listOf(
         R.string.cubano_bio,
         R.string.strong
     ),
+    // mazagran
     DrawableStringsSetup(
         id = 24,
         R.drawable.mazagran,
@@ -234,12 +238,21 @@ val coffeeData = listOf(
         R.string.maza_bio,
         R.string.balanced
     ),
+    // bicerin
     DrawableStringsSetup(
         id = 25,
         R.drawable.bicerin,
         R.string.bicerin,
         R.string.bicerin_bio,
         R.string.bold
+    ),
+    // kopi tubruk
+    DrawableStringsSetup(
+        id = 26,
+        R.drawable.kopi,
+        R.string.kopi,
+        R.string.kopi_bio,
+        R.string.strong
     )
 
 

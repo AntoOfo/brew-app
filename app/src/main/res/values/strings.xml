@@ -81,6 +81,9 @@
     <string name="bicerin">Bicerin</string>
     <string name="bicerin_bio">Layered drink of espresso, chocolate, and milk.</string>
 
+    <string name="kopi">Kopi Tubruk</string>
+    <string name="kopi_bio">Bold Indonesian coffee steeped in hot water.</string>
+
     <string name="coffee_title">Coffee Picks</string>
     <string name="cafe_title">Nearby Cafes</string>
 
