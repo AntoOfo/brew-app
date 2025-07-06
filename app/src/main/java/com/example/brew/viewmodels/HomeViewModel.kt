@@ -105,6 +105,4 @@ class HomeViewModel @Inject constructor (
                 }
             }
         }
-
-    val cafesDistance = cafes.map {}
 }

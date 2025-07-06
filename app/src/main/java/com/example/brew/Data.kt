@@ -16,7 +16,8 @@ data class Cafe(
     val name: String,
     val street: String,
     val lat: Double,
-    val lon: Double
+    val lon: Double,
+    val distance: Float? = null
 )
 
 // first thing seen in json, whole json response
