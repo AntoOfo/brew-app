@@ -18,10 +18,8 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextIndent
@@ -68,7 +66,7 @@ fun CoffeeDetailsSheet(
             )
             // origin
             Text(
-                text = "Origin: ${coffee.origin}",
+                text = coffee.origin,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(
                     horizontal = 21.dp, vertical = 16.dp
@@ -110,16 +108,6 @@ fun CoffeeDetailsSheet(
                     )
                 }
             }
-
-            Text(
-                text = "Cliche line about coffee.",
-                style = MaterialTheme.typography.titleSmall,
-                color = Color.White,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .alpha(0.5f)
-            )
 
         }
     }

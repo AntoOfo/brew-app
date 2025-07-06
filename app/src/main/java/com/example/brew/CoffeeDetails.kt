@@ -14,7 +14,7 @@ val coffeeDetails = listOf(
     // espresso
     CoffeeDetails(
         id = 1,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Espresso",
         instructions = listOf(
             "1. Finely grind high-quality coffee beans.",
@@ -34,7 +34,7 @@ val coffeeDetails = listOf(
     // americano
     CoffeeDetails(
         id = 2,
-        origin = "United States",
+        origin = "United States \uD83C\uDDFA\uD83C\uDDF8",
         type = "Americano",
         instructions = listOf(
             "1. Brew a standard espresso shot.",
@@ -54,7 +54,7 @@ val coffeeDetails = listOf(
     // latte
     CoffeeDetails(
         id = 3,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Latte",
         instructions = listOf(
             "1. Pull a fresh shot of espresso.",
@@ -74,7 +74,7 @@ val coffeeDetails = listOf(
     //cappucino
     CoffeeDetails(
         id = 4,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Cappuccino",
         instructions = listOf(
             "1. Brew a strong espresso shot.",
@@ -94,7 +94,7 @@ val coffeeDetails = listOf(
     // flat white
     CoffeeDetails(
         id = 5,
-        origin = "Australia/New Zealand",
+        origin = "Australia \uD83C\uDDE6\uD83C\uDDFA",
         type = "Flat White",
         instructions = listOf(
             "1. Prepare a double shot of espresso.",
@@ -114,7 +114,7 @@ val coffeeDetails = listOf(
     // mocha
     CoffeeDetails(
         id = 6,
-        origin = "Yemen",
+        origin = "Yemen \uD83C\uDDFE\uD83C\uDDEA",
         type = "Mocha",
         instructions = listOf(
             "1. Brew a shot of espresso.",
@@ -134,7 +134,7 @@ val coffeeDetails = listOf(
     // macchiato
     CoffeeDetails(
         id = 7,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Macchiato",
         instructions = listOf(
             "1. Pull a single or double shot of espresso.",
@@ -154,7 +154,7 @@ val coffeeDetails = listOf(
     // cold brew
     CoffeeDetails(
         id = 8,
-        origin = "Japan",
+        origin = "Japan \uD83C\uDDEF\uD83C\uDDF5",
         type = "Cold Brew",
         instructions = listOf(
             "1. Coarsely grind coffee beans.",
@@ -174,7 +174,7 @@ val coffeeDetails = listOf(
     // long black
     CoffeeDetails(
         id = 9,
-        origin = "Australia/New Zealand",
+        origin = "Australia \uD83C\uDDE6\uD83C\uDDFA",
         type = "Long Black",
         instructions = listOf(
             "1. Heat water to just below boiling.",
@@ -194,7 +194,7 @@ val coffeeDetails = listOf(
     // turkish coffee
     CoffeeDetails(
         id = 10,
-        origin = "Turkey",
+        origin = "Turkey \uD83C\uDDF9\uD83C\uDDF7",
         type = "Turkish Coffee",
         instructions = listOf(
             "1. Finely grind coffee beans to a powder.",
@@ -214,7 +214,7 @@ val coffeeDetails = listOf(
     // ristretto
     CoffeeDetails(
         id = 11,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Ristretto",
         instructions = listOf(
             "1. Use a fine grind of dark roasted coffee beans.",
@@ -234,7 +234,7 @@ val coffeeDetails = listOf(
     // affogato
     CoffeeDetails(
         id = 12,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Affogato",
         instructions = listOf(
             "1. Scoop quality vanilla ice cream into a small bowl.",
@@ -254,7 +254,7 @@ val coffeeDetails = listOf(
     // cortado
     CoffeeDetails(
         id = 13,
-        origin = "Spain",
+        origin = "Spain \uD83C\uDDEA\uD83C\uDDF8",
         type = "Cortado",
         instructions = listOf(
             "1. Brew a shot of espresso.",
@@ -274,7 +274,7 @@ val coffeeDetails = listOf(
     // red eye
     CoffeeDetails(
         id = 14,
-        origin = "United States",
+        origin = "United States \uD83C\uDDFA\uD83C\uDDF8",
         type = "Red Eye",
         instructions = listOf(
             "1. Brew a fresh cup of drip coffee.",
@@ -294,7 +294,7 @@ val coffeeDetails = listOf(
     // doppio
     CoffeeDetails(
         id = 15,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Doppio",
         instructions = listOf(
             "1. Use a double shot basket in your portafilter.",
@@ -314,7 +314,7 @@ val coffeeDetails = listOf(
     // irish coffee
     CoffeeDetails(
         id = 16,
-        origin = "Ireland",
+        origin = "Ireland \uD83C\uDDEE\uD83C\uDDEA",
         type = "Irish Coffee",
         instructions = listOf(
             "1. Brew a strong hot coffee.",
@@ -334,7 +334,7 @@ val coffeeDetails = listOf(
     // vienna
     CoffeeDetails(
         id = 17,
-        origin = "Austria",
+        origin = "Austria \uD83C\uDDE6\uD83C\uDDF9",
         type = "Vienna",
         instructions = listOf(
             "1. Brew two shots of strong espresso.",
@@ -354,7 +354,7 @@ val coffeeDetails = listOf(
     // breve
     CoffeeDetails(
         id = 18,
-        origin = "United States",
+        origin = "United States \uD83C\uDDFA\uD83C\uDDF8",
         type = "Breve",
         instructions = listOf(
             "1. Brew a shot of espresso.",
@@ -374,7 +374,7 @@ val coffeeDetails = listOf(
     // nitro
     CoffeeDetails(
         id = 19,
-        origin = "United States",
+        origin = "United States \uD83C\uDDFA\uD83C\uDDF8",
         type = "Nitro Cold Brew",
         instructions = listOf(
             "1. Coarsely grind coffee beans.",
@@ -394,7 +394,7 @@ val coffeeDetails = listOf(
     // cafe lait
     CoffeeDetails(
         id = 20,
-        origin = "France",
+        origin = "France \uD83C\uDDEB\uD83C\uDDF7",
         type = "Café au Lait",
         instructions = listOf(
             "1. Brew a strong drip or French press coffee.",
@@ -414,7 +414,7 @@ val coffeeDetails = listOf(
     // einspanner
     CoffeeDetails(
         id = 21,
-        origin = "Austria",
+        origin = "Austria \uD83C\uDDE6\uD83C\uDDF9",
         type = "Einspänner",
         instructions = listOf(
             "1. Brew a double shot of espresso.",
@@ -434,7 +434,7 @@ val coffeeDetails = listOf(
     // cafe bombon
     CoffeeDetails(
         id = 22,
-        origin = "Spain",
+        origin = "Spain \uD83C\uDDEA\uD83C\uDDF8",
         type = "Café Bombón",
         instructions = listOf(
             "1. Brew a shot of espresso.",
@@ -454,7 +454,7 @@ val coffeeDetails = listOf(
     // cafe cubano
     CoffeeDetails(
         id = 23,
-        origin = "Cuba",
+        origin = "Cuba \uD83C\uDDE8\uD83C\uDDFA",
         type = "Café Cubano",
         instructions = listOf(
             "1. Brew espresso using dark roast beans.",
@@ -474,7 +474,7 @@ val coffeeDetails = listOf(
     // mazagran
     CoffeeDetails(
         id = 24,
-        origin = "Algeria",
+        origin = "Algeria \uD83C\uDDE9\uD83C\uDDFF",
         type = "Mazagran",
         instructions = listOf(
             "1. Brew strong black coffee.",
@@ -494,7 +494,7 @@ val coffeeDetails = listOf(
     // bicerin
     CoffeeDetails(
         id = 25,
-        origin = "Italy",
+        origin = "Italy \uD83C\uDDEE\uD83C\uDDF9",
         type = "Bicerin",
         instructions = listOf(
             "1. Warm chocolate and pour into a glass.",
@@ -514,7 +514,7 @@ val coffeeDetails = listOf(
     // kopi tubruk
     CoffeeDetails(
         id = 26,
-        origin = "Indonesia",
+        origin = "Indonesia \uD83C\uDDEE\uD83C\uDDE9",
         type = "Kopi Tubruk",
         instructions = listOf(
             "1. Add 1-2 tsp of coarse coffee to a glass.",
