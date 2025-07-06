@@ -25,6 +25,7 @@ import com.example.brew.ui.theme.BrewTheme
 fun CafeElement(
     name: String,
     street: String,
+    distance: Float,
     lat: Double,
     lon: Double,
     modifier: Modifier = Modifier) {
@@ -61,7 +62,7 @@ fun CafeElement(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = street,   // placeholder
+                text = "$street • $distance",   // placeholder
                 style = MaterialTheme.typography.bodySmall
             )
         }
@@ -77,7 +78,8 @@ fun CafeElementPreview() {
             modifier = TODO(),
             street = TODO(),
             lat = TODO(),
-            lon = TODO()
+            lon = TODO(),
+            distance = TODO()
         )
     }
 }

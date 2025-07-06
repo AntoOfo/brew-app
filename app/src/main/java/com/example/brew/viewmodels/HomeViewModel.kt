@@ -86,12 +86,22 @@ class HomeViewModel @Inject constructor (
                         val name = feature.properties.name
                         val street = feature.properties.street ?: ""
                         val coords = feature.geometry.coordinates
+
                         if (name != null && coords.size >= 2) {
+
+                            // built in function to find distance between coords
+                            val results = FloatArray(1)
+                            android.location.Location.distanceBetween(
+                                lat, lon,
+                                coords[1], coords[0],
+                                results
+                            )
                             Cafe(
                                 name = name,
                                 street = street,
                                 lat = coords[1],   // order on api url
-                                lon = coords[0]
+                                lon = coords[0],
+                                distance = results[0] // 0, where the distance is found in function
                             )
                         } else {
                             null
