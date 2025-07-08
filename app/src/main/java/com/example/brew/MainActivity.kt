@@ -64,9 +64,10 @@ class MainActivity : ComponentActivity() {
                 arrayOf(Manifest.permission.POST_NOTIFICATIONS),
                 101
             )
-        }
+        } else {
 
-        checkLocationPerms()
+            checkLocationPerms()
+        }
 
         enableEdgeToEdge()
         setContent {
@@ -101,13 +102,21 @@ class MainActivity : ComponentActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == 10) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //perms granted, get location
-                getLastLocation()
+        when (requestCode) {
+            101 -> {
+                checkLocationPerms()
             }
+
+            10 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //perms granted, get location
+                    getLastLocation()
+                } else {
+                    //
+                }
             }
         }
+    }
 
     @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
     private fun getLastLocation() {
