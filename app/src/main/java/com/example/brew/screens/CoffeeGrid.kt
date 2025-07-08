@@ -115,6 +115,11 @@ fun CoffeeGrid(
                     item.strengthText,
                     likedCoffees.contains(item.id),  // id pass
                     { onFavouriteToggle(item.id) },  // id pass for favouritng
+                    onClick = {
+                        isClicked = true
+                        onItemClick(item.id)
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    },
                     modifier = Modifier
                         .graphicsLayer {
                             scaleX = scale
@@ -122,11 +127,6 @@ fun CoffeeGrid(
                         }
                         .alpha(alpha)
                         .offset { IntOffset(0, offsetY) }
-                        .clip(MaterialTheme.shapes.medium)
-                        .clickable {
-                            isClicked = true
-                            onItemClick(item.id)
-                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)}  // passing in the ids to be matched
                 )
             }
         }

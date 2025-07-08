@@ -32,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Star
@@ -56,6 +57,7 @@ fun CoffeeElement(
     @StringRes coffeeStrength: Int,
     isFavourite: Boolean,
     onFavouriteToggle: () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier) {
 
     var trackAnim by remember { mutableStateOf(false)}
@@ -80,6 +82,7 @@ fun CoffeeElement(
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface,
         shadowElevation = 8.dp,
+        onClick = { onClick()},
         modifier = modifier
             .fillMaxWidth()
             .height(145.dp)) {
@@ -160,7 +163,8 @@ fun CoffeeElementPreview() {
             R.string.strong,
             isFavourite = TODO(),
             onFavouriteToggle = TODO(),
-            modifier = TODO()
+            modifier = TODO(),
+            onClick = TODO()
         )
     }
 }
