@@ -3,7 +3,9 @@ package com.example.brew
 import com.example.brew.room.LikedCoffee
 import com.example.brew.room.LikedCoffeeDao
 import com.example.brew.viewmodels.HomeViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Test
+import kotlinx.coroutines.test.runTest
 
 import org.junit.Assert.*
 import org.junit.Before
@@ -30,13 +32,27 @@ class FakeLikedCoffeeDao : LikedCoffeeDao {
     }
 }
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModelTest {
 
     private lateinit var viewModel: HomeViewModel
+    private lateinit var fakeDao: FakeLikedCoffeeDao
 
     // sets up fresh viewmodel
     @Before
     fun setup() {
-        viewModel = HomeViewModel()
+        fakeDao = FakeLikedCoffeeDao()
+        viewModel = HomeViewModel(fakeDao)
+    }
+
+    @Test
+    fun loadNearbyCafes_test() = runTest {
+
+        // calling function w random london coords
+        viewModel.loadNearbyCafes(51.51, 0.13)
+
+        // check if list updated
+        assertNotNull(viewModel.cafes)
+        assertTrue(viewModel.cafes.isNotEmpty())
     }
 }
