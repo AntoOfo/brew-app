@@ -1,7 +1,10 @@
 package com.example.brew
 
 import android.Manifest
+import android.app.PendingIntent
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -100,6 +103,19 @@ class MainActivity : ComponentActivity() {
                 // probs have a toast
             }
         }
+    }
+
+    // schedules daily notis
+    fun scheduleNotis(context: Context) {
+        val intent = Intent(context, NotisReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+
     }
 }
 
