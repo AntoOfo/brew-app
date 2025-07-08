@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <style name="Theme.Brew" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Brew.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/brewlogo4</item>
+        <item name="postSplashScreenTheme">@style/Theme.Brew</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+
+    </style>
 </resources>
