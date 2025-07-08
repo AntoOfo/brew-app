@@ -1,13 +1,17 @@
 package com.example.brew
 
 import android.Manifest
+import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.icu.util.Calendar
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -51,6 +55,17 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+
+        // requests notis perms
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                101
+            )
+        }
+
         checkLocationPerms()
 
         enableEdgeToEdge()
@@ -58,6 +73,7 @@ class MainActivity : ComponentActivity() {
             BrewTheme {
                 MyApp(refreshLocation = refreshLocation)  // called myapp with observed rotated state to allow either landscape/portrait
             }
+            scheduleNotis(this)
         }
     }
 
@@ -100,7 +116,7 @@ class MainActivity : ComponentActivity() {
                 viewModel.loadNearbyCafes(location.latitude, location.longitude)
             } else {
                 // idk how ur location could be null lol
-                // probs have a toast
+                Toast.makeText(this, "Location isn't available.", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -115,7 +131,28 @@ class MainActivity : ComponentActivity() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
+        // sets to 9am
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 15)
+            set(Calendar.MINUTE, 14)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+
+            // schedules for next day if 9am alr passed
+            if (before(Calendar.getInstance())) {
+                add(Calendar.DAY_OF_MONTH, 1)
+            }
+        }
+
+        // repeats
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
     }
 }
 
