@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -48,6 +49,14 @@ fun CoffeeGrid(
     modifier: Modifier = Modifier) {
 
     val haptic = LocalHapticFeedback.current
+    val listState = rememberLazyGridState()
+    val isScrolling = listState.isScrollInProgress
+
+    var hasLaunchedOnce by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        delay(100)
+        hasLaunchedOnce = true
+    }
 
     val configuration = LocalConfiguration.current  // allows app to see used device specs
     val screenHeightDp = configuration.screenHeightDp.dp
@@ -67,27 +76,38 @@ fun CoffeeGrid(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            itemsIndexed(coffeeList) { index, item ->     // populates grid with coffee data
+            itemsIndexed(
+                items = coffeeList,
+                key = { _, item -> item.id }
+            ) { index, item ->
                 // general grid animation
 
                 // tracks if item should visible
+                val shouldAnimate = !hasLaunchedOnce || !isScrolling
                 var visible by remember { mutableStateOf(false) }
+
+                val animationDelay = if (!hasLaunchedOnce) index * 40 else 0
+
                 // fade in animation
                 val alpha by animateFloatAsState(
-                    targetValue = if (visible) 1f else 0f,
-                    animationSpec = tween(durationMillis = 250, delayMillis = index*50),
+                    targetValue = if (visible || !shouldAnimate) 1f else 0f,
+                    animationSpec = tween(durationMillis = 130, delayMillis = animationDelay),
                     label = "fadeInAnimation"
                 )
                 // slide in animation
                 val offsetY by animateIntAsState(
-                    targetValue = if (visible) 0 else 30,
-                    animationSpec = tween(durationMillis = 250, delayMillis = index*50),
+                    targetValue = if (visible || !shouldAnimate) 0 else 30,
+                    animationSpec = tween(durationMillis = 130, delayMillis = animationDelay),
                     label = "slideInAnimation"
 
                 )
 
-                LaunchedEffect(Unit) {  // stagger delay if needed
-                    visible = true
+                LaunchedEffect(shouldAnimate) {
+                    if (shouldAnimate) {
+                        visible = true
+                    } else {
+                        visible = false
+                    }
                 }
 
                 // element animation

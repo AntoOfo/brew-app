@@ -2,8 +2,10 @@ package com.example.brew
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Immutable
 
 // strings setup for the coffee element
+@Immutable
 data class DrawableStringsSetup(
     val id: Int,
     @DrawableRes val drawable: Int,
