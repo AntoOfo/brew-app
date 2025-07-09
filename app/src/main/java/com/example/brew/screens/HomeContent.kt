@@ -21,28 +21,23 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.brew.CoffeeDetails
+import com.example.brew.LocationPermissionState
 import com.example.brew.R
 import com.example.brew.coffeeData
 import com.example.brew.coffeeDetails
@@ -73,7 +68,8 @@ fun HomeSection(
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
-    refreshLocation: (() -> Unit)? = null
+    refreshLocation: (() -> Unit)? = null,
+    locationPermissionState: LocationPermissionState = LocationPermissionState.UNDECIDED
 ) {
 
     val configuration = LocalConfiguration.current  // allows app to see used device specs
@@ -120,7 +116,8 @@ fun HomeScreen(
             // passing viewmodel state/event to searchbar
             value = searchQuery,
             onValueChange = viewModel::onSearchQueryChange,
-            Modifier.padding(horizontal = 16.dp))
+            Modifier.padding(horizontal = 16.dp)
+        )
 
         HomeSection(title = R.string.coffee_title) {
             Box(
@@ -169,67 +166,113 @@ fun HomeScreen(
 
         HomeSection(title = R.string.cafe_title) {
             when {
-                isLoadingCafes -> {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.padding(16.dp),
-                            color = MaterialTheme.colorScheme.secondary
-                        )
-                    }
-                }
-
-                cafesErrorMsg != null -> {
-                    Box(modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
-                        .height(70.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Button(
-                            onClick = {
-                            refreshLocation?.invoke()
-                        },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.surface,
-                                contentColor = MaterialTheme.colorScheme.secondary
-                            ),
-                            border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f))
-                        ) {
-                            Icon(
-                                Icons.Filled.Refresh,
-                                contentDescription = "Refresh button",
-                                modifier = Modifier.padding(end = 6.dp)
-                            )
-                            Text("Try again?")
-                        }
-                }
-                    }
-                else -> {
+                locationPermissionState == LocationPermissionState.DENIED -> {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(70.dp)
+                            .height(70.dp),
+                        contentAlignment = Alignment.Center
                     ) {
-                        CafeElementRow(
-                            cafes = cafes,
-                            modifier = Modifier
-                        )
+                        Text("Location perms is needed to show cafes")
                     }
+                }
+                        isLoadingCafes -> {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.padding(16.dp),
+                                    color = MaterialTheme.colorScheme.secondary
+                                )
+                            }
+                        }
+
+                        cafesErrorMsg != null -> {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp)
+                                    .height(70.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Button(
+                                    onClick = {
+                                        refreshLocation?.invoke()
+                                    },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = MaterialTheme.colorScheme.surface,
+                                        contentColor = MaterialTheme.colorScheme.secondary
+                                    ),
+                                    border = BorderStroke(
+                                        0.5.dp,
+                                        color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f)
+                                    )
+                                ) {
+                                    Icon(
+                                        Icons.Filled.Refresh,
+                                        contentDescription = "Refresh button",
+                                        modifier = Modifier.padding(end = 6.dp)
+                                    )
+                                    Text("Try again?")
+                                }
+                            }
+                        }
+
+                        cafes.isNotEmpty() -> {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(70.dp)
+                            ) {
+                                CafeElementRow(
+                                    cafes = cafes,
+                                    modifier = Modifier
+                                )
+                            }
+                        }
+
+                locationPermissionState == LocationPermissionState.GRANTED -> {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp)
+                                    .height(70.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Button(
+                                    onClick = { refreshLocation?.invoke() },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = MaterialTheme.colorScheme.surface,
+                                        contentColor = MaterialTheme.colorScheme.secondary
+                                    ),
+                                    border = BorderStroke(
+                                        0.5.dp,
+                                        color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f)
+                                    )
+                                ) {
+                                    Icon(
+                                        Icons.Filled.Refresh,
+                                        contentDescription = "Refresh button",
+                                        modifier = Modifier.padding(end = 6.dp)
+                                    )
+                                    Text("Try again?")
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         }
 
-    }
-}
-
 // apps portrait layout
 @Composable
-fun MyAppPortrait(refreshLocation: (() -> Unit)? = null) {
+fun MyAppPortrait(
+    refreshLocation: (() -> Unit)? = null,
+    locationPermissionState: LocationPermissionState = LocationPermissionState.UNDECIDED) {
     val viewModel: HomeViewModel = hiltViewModel()
     BrewTheme {
         Scaffold(bottomBar = { BottomNavigation(viewModel = viewModel) })
@@ -237,14 +280,17 @@ fun MyAppPortrait(refreshLocation: (() -> Unit)? = null) {
             HomeScreen(
                 viewModel = viewModel,
                 modifier =Modifier.padding(paddingValues),
-                refreshLocation = refreshLocation)
+                refreshLocation = refreshLocation,
+                locationPermissionState = locationPermissionState)
         }
     }
 }
 
 // apps landscape layout
 @Composable
-fun MyAppLandscape(refreshLocation: (() -> Unit)? = null) {
+fun MyAppLandscape(
+    refreshLocation: (() -> Unit)? = null,
+    locationPermissionState: LocationPermissionState = LocationPermissionState.UNDECIDED) {
     val viewModel: HomeViewModel = hiltViewModel()
     BrewTheme {
         Surface(        // manually set the background because the color disappears for some reason
@@ -255,7 +301,8 @@ fun MyAppLandscape(refreshLocation: (() -> Unit)? = null) {
                 NavigationRail(viewModel = viewModel)
                 HomeScreen(
                     viewModel = viewModel,
-                    refreshLocation = refreshLocation)
+                    refreshLocation = refreshLocation,
+                    locationPermissionState = locationPermissionState)
             }
         }
     }
@@ -263,15 +310,17 @@ fun MyAppLandscape(refreshLocation: (() -> Unit)? = null) {
 
 // finalised app layout portrait/landscape to be called
 @Composable
-fun MyApp(refreshLocation: (() -> Unit)? = null) {
+fun MyApp(
+    refreshLocation: (() -> Unit)? = null,
+    locationPermissionState: LocationPermissionState = LocationPermissionState.UNDECIDED) {
 
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     if (isLandscape) {
-        MyAppLandscape(refreshLocation = refreshLocation)
+        MyAppLandscape(refreshLocation = refreshLocation, locationPermissionState)
     } else {
-        MyAppPortrait(refreshLocation = refreshLocation)
+        MyAppPortrait(refreshLocation = refreshLocation, locationPermissionState)
     }
 }
 

@@ -3,14 +3,12 @@ package com.example.brew
 import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +16,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresPermission
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.runtime.mutableStateOf
 import androidx.core.app.ActivityCompat
 import com.example.brew.screens.MyApp
 import com.example.brew.ui.theme.BrewTheme
@@ -28,6 +27,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    var locationPermmisionDenied = mutableStateOf(false)
+    var locationPermissionState = mutableStateOf(LocationPermissionState.UNDECIDED)
+
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     // bringing in the viewmodel
@@ -72,7 +76,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BrewTheme {
-                MyApp(refreshLocation = refreshLocation)  // called myapp with observed rotated state to allow either landscape/portrait
+                MyApp(
+                    refreshLocation = refreshLocation,
+                    locationPermissionState = locationPermissionState.value)  // called myapp with observed rotated state to allow either landscape/portrait
             }
             scheduleNotis(this)
         }
@@ -108,11 +114,13 @@ class MainActivity : ComponentActivity() {
             }
 
             10 -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //perms granted, get location
+                locationPermissionState.value = if (
+                    grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                ) {
                     getLastLocation()
+                    LocationPermissionState.GRANTED
                 } else {
-                    //
+                    LocationPermissionState.DENIED
                 }
             }
         }
@@ -125,7 +133,8 @@ class MainActivity : ComponentActivity() {
                 viewModel.loadNearbyCafes(location.latitude, location.longitude)
             } else {
                 // idk how ur location could be null lol
-                Toast.makeText(this, "Location isn't available.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Locat" +
+                        "ion isn't available.", Toast.LENGTH_SHORT).show()
             }
         }
     }
