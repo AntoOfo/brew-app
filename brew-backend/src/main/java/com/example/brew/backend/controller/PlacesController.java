@@ -35,4 +35,10 @@ public class PlacesController {
 
         }
     
+    @GetMapping("/health")
+    public String healthCheck() {
+        return "OK";
+    }
+    
 }
+
