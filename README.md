@@ -73,8 +73,8 @@
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/AntoOfo/Brew
-   cd Brew
+   git clone https://github.com/AntoOfo/brew-app
+   cd brew-app
     ```
 2. Open the project in Android Studio.
 
@@ -91,12 +91,6 @@
    geoapify.api.key=YOUR_API_KEY
     ```
 3. Host it on **Render** or run it locally.
-
----
-
-## 🚀 Coming Soon
-
-☕ **Brew** will be available on the **Google Play Store** soon and will be **continuously updated** with new features and improvements.
 
 ---
 
